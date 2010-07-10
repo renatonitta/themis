@@ -31,5 +31,12 @@ describe PostsController do
         response.code.should eql("302")
       end
     end
+
+    describe "PUT update" do
+      it "should return 302 as the status code"  do
+        put :update, :id => 10
+        response.code.should eql("302")
+      end
+    end
   end
 end
