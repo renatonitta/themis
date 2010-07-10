@@ -38,5 +38,12 @@ describe PostsController do
         response.code.should eql("302")
       end
     end
+
+    describe "DELETE destroy" do
+      it "should return 302 as the status code" do
+        delete :destroy, :id => 20
+        response.code.should eql("302")
+      end
+    end
   end
 end
