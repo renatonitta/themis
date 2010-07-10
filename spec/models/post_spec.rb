@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Post do
-  pending "add some examples to (or delete) #{__FILE__}"
+  should_belong_to :user
+  should_validate_presence_of :title, :body, :user
 end
