@@ -3,5 +3,5 @@
 Factory.define :post do |f|
   f.title "MyString"
   f.body "MyText"
-  f.user nil
+  f.association :user
 end

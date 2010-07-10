@@ -1,0 +1,7 @@
+.posts
+  - @posts.each do |post|
+    .post
+      .title= post.title
+      .user= post.user.name
+      .date= post.created_at
+      .body= post.body
