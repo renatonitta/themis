@@ -1,6 +1,6 @@
 class PostsController < InheritedResources::Base
   before_filter :authenticate_user!, :only => [:create]
-  before_filter :assign_user
+  before_filter :assign_user, :only => [:create]
 
   private
 
