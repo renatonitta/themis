@@ -1,5 +1,0 @@
-#search
-  = form_tag 'http://google.com/search', :method => :get do
-    = hidden_field_tag :sitesearch, request.host
-    = text_field_tag :q
-    = submit_tag t(:search)

@@ -33,12 +33,10 @@ body {
     @include last;
   }
 
-
   $sidebar-columns: floor($blueprint-grid-columns / 4);
   $content-columns: $blueprint-grid-columns - $sidebar-columns;
   #sidebar {
     @include column($sidebar-columns, true);
-    @include prepend($content-columns);
   }
 
   #content {
