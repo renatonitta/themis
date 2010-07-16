@@ -30,17 +30,19 @@ body {
 
   #header, #footer {
     @include column($blueprint-grid-columns);
+    @include last;
   }
 
+
+  $sidebar-columns: floor($blueprint-grid-columns / 4);
+  $content-columns: $blueprint-grid-columns - $sidebar-columns;
   #sidebar {
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    $sidebar-columns: floor($blueprint-grid-columns / 3);
-    @include column($sidebar-columns);
+    @include column($sidebar-columns, true);
+    @include prepend($content-columns);
   }
 
   #content {
-    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
-    @include column($content-columns, true); 
+    @include column($content-columns); 
   }
     
   form {
