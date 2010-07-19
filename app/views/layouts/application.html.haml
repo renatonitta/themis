@@ -13,9 +13,9 @@
     = csrf_meta_tag
   %body
     #container
-      #header HEADER
-      #sidebar
+      #header.span-24 HEADER
+      #content.span-16= yield
+      #sidebar.span-8.last
         SIDEBAR
         = render 'shared/search'
-      #content= yield
-      #footer FOOTER
+      #footer.span-24 FOOTER
