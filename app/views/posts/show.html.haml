@@ -5,8 +5,8 @@
   %b Body:
   = @post.body
 %p
-  %b User:
-  = @post.user
+  %b Author:
+  = @post.author.name
 %p
   =raw disqus_thread(:num_items => 10)
 
