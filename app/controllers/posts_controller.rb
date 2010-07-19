@@ -6,6 +6,6 @@ class PostsController < InheritedResources::Base
   private
 
   def assign_user
-    params[:post][:user] = current_user
+    params[:post][:author] = current_user
   end
 end

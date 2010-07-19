@@ -36,7 +36,6 @@ describe PostsController do
   end
 
   context "with a logged user" do
-
     before :each do
       sign_in Factory(:user)
     end
@@ -44,7 +43,7 @@ describe PostsController do
     describe "POST create" do
       it "should create a post for the logged user" do
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        Post.last.user.should == controller.current_user
+        Post.last.author.should == controller.current_user
       end
 
       it "should create a post for specified section" do
@@ -57,7 +56,7 @@ describe PostsController do
       it "should not update the owner" do
         post = Factory(:post, :section => section)
         put :update, :section_id => section.id, :id => post.id, :post => { :title => "Title", :body => "Body" }
-        Post.last.user.should_not == controller.current_user
+        Post.last.author.should_not == controller.current_user
       end
     end
   end
