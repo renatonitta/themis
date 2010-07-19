@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PostsController do
-  include Devise::TestHelpers
+  should_require_authentication_on_private_actions
 
   context "with a logged user" do
     before :each do
@@ -20,29 +20,6 @@ describe PostsController do
         post = Factory(:post)
         put :update, :id => post.id, :post => {}
         Post.last.user.should_not == controller.current_user
-      end
-    end
-  end
-
-  context "without a logged user" do
-    describe "POST create" do
-      it "should return 302 as the status code"  do
-        post :create
-        response.code.should eql("302")
-      end
-    end
-
-    describe "PUT update" do
-      it "should return 302 as the status code"  do
-        put :update, :id => 10
-        response.code.should eql("302")
-      end
-    end
-
-    describe "DELETE destroy" do
-      it "should return 302 as the status code" do
-        delete :destroy, :id => 20
-        response.code.should eql("302")
       end
     end
   end
