@@ -1,7 +1,7 @@
 Themis::Application.routes.draw do |map|
-  resources :sections
-
-  resources :posts
+  resources :sections do
+    resources :posts
+  end
 
   devise_for :users
   root :to => "posts#index"
