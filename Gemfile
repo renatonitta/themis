@@ -11,6 +11,9 @@ gem "devise", ">=1.1.rc2"
 gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
 gem "friendly_id", "~>3.0"
 gem "compass", ">= 0.10.1"
+gem "disqus", ">= 1.0.4"
+
+gem "ruby-debug19", :group => :development
 
 gem "rspec", ">=2.0.0.alpha.11", :group => :test
 gem "rspec-rails", ">=2.0.0.alpha.11", :group => :test
