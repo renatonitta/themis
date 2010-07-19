@@ -6,4 +6,5 @@ Feature: Show comments
     Then I should see "Add comment"
 
     When I follow "Add comment"
-    Then I should see "Comment from cucumber"
+    Then I wait for disqus
+    And I should see "blog comments powered by Disqus"
