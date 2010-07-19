@@ -18,7 +18,7 @@ Themis::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   {:account => 'gonowlabs', :developer => true,
-   :default_tab => 'popular', :color => 'blue',  
+   :default_tab => 'popular', :color => 'grey',  
    :hide_mods => true, :num_items => 10, :show_powered_by => false}.each do |key, value|
     Disqus::defaults[key] = value
   end
