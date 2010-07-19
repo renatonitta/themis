@@ -5,3 +5,7 @@
       .user= post.user.name
       .date= post.created_at
       .body= post.body
+    .comments
+      = link_to("Add comment", post_path(post, :anchor => "comments"))
+      = raw disqus_comment_counts
+
