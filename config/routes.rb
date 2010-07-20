@@ -4,5 +4,5 @@ Themis::Application.routes.draw do |map|
   end
 
   devise_for :users
-  root :to => "posts#index"
+  root :to => "posts#all"
 end
