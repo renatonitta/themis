@@ -1,18 +1,17 @@
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Tag list:
-  - @post.tags.each do |tag|
-    = link_to(tag.name, tags_path(tag.name))
-%p
-  %b Body:
-  = raw @post.body.to_html
-%p
-  %b Author:
-  = @post.author.name
+.post
+  %p
+    %b Title:
+    = @post.title
+  %p
+    %b Tag list:
+    - @post.tags.each do |tag|
+      = link_to(tag.name, tags_path(tag.name))
+  %p
+    %b Body:
+    = raw @post.body.to_html
+  %p
+    %b Author:
+    = @post.author.name
 .comments
   %p
     = raw disqus_thread
-%p
-  = raw disqus_thread
