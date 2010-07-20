@@ -7,4 +7,4 @@ Feature: Show comments
 
     When I follow "Add comment"
     And I wait for disqus
-    Then I should see "blog comments powered by Disqus"
+    Then I should see "Disqus"
