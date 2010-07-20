@@ -19,7 +19,7 @@ module NavigationHelpers
       '/tags/' + $1
 
     when /new user page/
-      'sign_up_path'
+      new_user_registration_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
