@@ -1,5 +1,5 @@
-Then /^I should see (\d+) posts$/ do |count|
-  Nokogiri::HTML(page.body).css(".posts > .post").size.should == count.to_i
+Then /^I should see (\d+) (.*)/ do |count, plural|
+  Nokogiri::HTML(page.body).css(".#{plural} > .#{plural.singularize}").size.should == count.to_i
 end
 
 Then /^I wait for disqus$/ do
