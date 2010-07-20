@@ -3,7 +3,7 @@
 %html
   %head
     %title My application
-    = yield :head
+    %meta{ :name => "keywords", :content => yield(:keywords) }
     = stylesheet_link_tag 'screen', :media => 'screen, projection'
     = stylesheet_link_tag 'print', :media => 'print'
     /[if lt IE 8]
