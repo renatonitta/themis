@@ -12,6 +12,7 @@ gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branc
 gem "friendly_id", "~>3.0"
 gem "compass", ">= 0.10.1"
 gem "disqus", ">= 1.0.4"
+gem "RedCloth", ">= 4.2.3"
 
 gem "ruby-debug19", :group => :development
 
