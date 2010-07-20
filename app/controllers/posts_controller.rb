@@ -5,7 +5,7 @@ class PostsController < InheritedResources::Base
   before_filter :assign_user, :only => [:create]
 
   def all
-    @posts = Post.all
+    @posts = Post.approved
     render :index
   end
 

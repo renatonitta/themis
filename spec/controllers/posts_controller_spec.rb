@@ -35,10 +35,11 @@ describe PostsController do
         assigns(:sections).size.should == Section.count
       end
 
-      it "should return all the posts" do
-        2.times { Factory :post }
+      it "should return all the approved posts" do
+        Factory :post
+        2.times { Factory :approved_post }
         get :all
-        assigns(:posts).size.should == Post.count
+        assigns(:posts).size.should == Post.approved.size
       end
     end
 

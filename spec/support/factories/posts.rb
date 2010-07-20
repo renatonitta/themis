@@ -6,3 +6,7 @@ Factory.define :post do |f|
   f.association :author, :factory => :user
   f.association :section
 end
+
+Factory.define :approved_post, :parent => :post do |f|
+  f.aasm_state 'approved'
+end
