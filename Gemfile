@@ -14,7 +14,7 @@ gem "compass", ">= 0.10.1"
 gem "disqus", ">= 1.0.4"
 gem "RedCloth", ">= 4.2.3"
 gem "acts-as-taggable-on", ">= 2.0.6"
-gem "aasm", ">=2.1.5"
+gem "aasm", :git => "http://github.com/rubyist/aasm.git"
 
 gem "rspec", ">=2.0.0.alpha.11", :group => :test
 gem "rspec-rails", ">=2.0.0.alpha.11", :group => :test
