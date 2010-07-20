@@ -1,10 +1,10 @@
 .posts
   - @posts.each do |post|
     .post
-      .title= post.title
+      .title= RedCloth.new(post.title).to_html
       .user= post.author.name
       .date= post.created_at
-      .body= post.body
+      .body= RedCloth.new(post.body).to_html
     .comments
       = link_to("Add comment", section_post_path(post.section, post, :anchor => "disqus_thread"))
       = raw disqus_comment_counts

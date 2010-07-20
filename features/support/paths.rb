@@ -11,6 +11,10 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /^(.*)'s post page/ 
+      post = Post.find_by_title($1)
+      section_post_path(post.section, post)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
