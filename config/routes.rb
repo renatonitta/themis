@@ -3,6 +3,6 @@ Themis::Application.routes.draw do |map|
     resources :posts
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "admin/sessions" }
   root :to => "posts#all"
 end
