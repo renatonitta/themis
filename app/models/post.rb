@@ -1,9 +1,15 @@
 class Post < ActiveRecord::Base
+  include AASM
+
   belongs_to :author, :class_name => 'User', :foreign_key => "user_id"
   belongs_to :section
   validates_presence_of :title, :body, :author, :section
   has_friendly_id :title, :use_slug => true
   acts_as_taggable_on :tags
+  
+  aasm_initial_state :waiting_approval
+
+  aasm_state :waiting_approval
 end
 
 class String
