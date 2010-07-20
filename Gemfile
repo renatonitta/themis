@@ -15,8 +15,6 @@ gem "disqus", ">= 1.0.4"
 gem "RedCloth", ">= 4.2.3"
 gem "acts-as-taggable-on", ">= 2.0.6"
 
-gem "ruby-debug19", :group => :development
-
 gem "rspec", ">=2.0.0.alpha.11", :group => :test
 gem "rspec-rails", ">=2.0.0.alpha.11", :group => :test
 gem "remarkable", ">=4.0.0.alpha4", :group => :test
