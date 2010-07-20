@@ -4,3 +4,9 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :body, :author, :section
   has_friendly_id :title, :use_slug => true
 end
+
+class String
+  def to_html
+    RedCloth.new(self).to_html
+  end
+end

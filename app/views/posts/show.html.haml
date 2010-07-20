@@ -1,9 +1,9 @@
 %p
   %b Title:
-  = RedCloth.new(@post.title).to_html
+  = raw @post.title.to_html
 %p
   %b Body:
-  = RedCloth.new(@post.body).to_html
+  = raw @post.body.to_html
 %p
   %b Author:
   = @post.author.name
