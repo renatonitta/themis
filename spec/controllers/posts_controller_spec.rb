@@ -7,9 +7,11 @@ describe PostsController do
 
   context "without a logged user" do
     describe "GET index" do
-      it "should return 200 as the status code" do
-        get :index, :section_id => section.id
-        response.code.should eql("200")
+      [:html, :rss].each do |format|
+        it "should return 200 as the status code with #{format} format" do
+          get :index, :section_id => section.id, :format => format
+          response.code.should eql("200")
+        end
       end
     end
 
