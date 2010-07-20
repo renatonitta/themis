@@ -2,7 +2,7 @@ Feature: Creating posts
 
   Scenario: Creating a post
     Given I am logged in
-    And 1 sections exist
+    And a section exists
     When I visit new post
     And I fill in "Title" with "My post"
     And I fill in "Body" with "My test post"
