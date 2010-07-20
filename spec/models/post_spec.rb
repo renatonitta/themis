@@ -9,4 +9,10 @@ describe Post do
   it "should be waiting approval by default" do
     Factory(:post).should be_waiting_approval
   end
+
+  it "should be published when approved" do
+    post = Factory(:post)
+    post.approve
+    post.should be_approved
+  end
 end

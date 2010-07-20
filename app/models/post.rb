@@ -10,6 +10,11 @@ class Post < ActiveRecord::Base
   aasm_initial_state :waiting_approval
 
   aasm_state :waiting_approval
+  aasm_state :approved
+  
+  aasm_event :approve do
+    transitions :to => :approved, :from => [:waiting_approval]
+  end
 end
 
 class String
