@@ -12,6 +12,13 @@ describe PostsController do
           get :index, :section_id => section.id, :format => format
           response.code.should eql("200")
         end
+
+        it "should return only approved posts" do
+          3.times { Factory :post, :section => section }
+          2.times { Factory :approved_post, :section => section }
+          get :index, :section_id => section.id, :format => format
+          assigns(:posts).size.should == section.posts.approved.size
+        end
       end
     end
 

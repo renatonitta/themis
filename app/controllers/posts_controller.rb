@@ -21,6 +21,10 @@ class PostsController < InheritedResources::Base
     @post = Post.find params[:id]
   end
 
+  def collection
+    @posts = end_of_association_chain.approved
+  end
+
   private
 
   def assign_sections
