@@ -13,6 +13,28 @@ describe PostsController do
       end
     end
 
+    describe "GET show" do
+      it "should assign the post to @post" do
+        post = Factory :post, :section => section
+        get :show, :section_id => section.id, :id => post.id
+        assigns(:post).should == post
+      end
+    end
+
+    describe "GET all" do
+      it "should return all the sections" do
+        2.times { Factory :section }
+        get :all
+        assigns(:sections).size.should == Section.count
+      end
+
+      it "should return all the posts" do
+        2.times { Factory :post }
+        get :all
+        assigns(:posts).size.should == Post.count
+      end
+    end
+
     describe "POST create" do
       it "should return 302 as the status code"  do
         post :create, :section_id => section.id
