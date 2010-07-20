@@ -42,6 +42,16 @@ describe PostsController do
       end
     end
 
+    describe "GET by_tag" do
+      it "should return all the posts with the specific tag" do
+        Factory :post, :tag_list => 'tag1, tag2'
+        Factory :post, :tag_list => 'tag2'
+        Factory :post, :tag_list => 'tag3'
+        get :by_tag, :id => 'tag2'
+        assigns(:posts).size.should == 2
+      end
+    end
+
     describe "POST create" do
       it "should return 302 as the status code"  do
         post :create, :section_id => section.id

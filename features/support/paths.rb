@@ -15,6 +15,9 @@ module NavigationHelpers
       post = Post.find_by_title($1)
       section_post_path(post.section, post)
 
+    when /posts with tag (.*)/
+      '/tags/' + $1
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

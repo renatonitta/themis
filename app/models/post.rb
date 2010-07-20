@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :section
   validates_presence_of :title, :body, :author, :section
   has_friendly_id :title, :use_slug => true
+  acts_as_taggable_on :tags
 end
 
 class String

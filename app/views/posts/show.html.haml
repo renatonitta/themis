@@ -2,6 +2,10 @@
   %b Title:
   = @post.title
 %p
+  %b Tag list:
+  - @post.tags.each do |tag|
+    = link_to(tag.name, tags_path(tag.name))
+%p
   %b Body:
   = raw @post.body.to_html
 %p
@@ -10,3 +14,5 @@
 .comments
   %p
     = raw disqus_thread
+%p
+  = raw disqus_thread

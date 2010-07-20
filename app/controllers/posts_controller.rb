@@ -9,6 +9,11 @@ class PostsController < InheritedResources::Base
     render :index
   end
 
+  def by_tag
+    @posts = Post.tagged_with params[:id]
+    render :index
+  end
+
   protected
 
   def resource
