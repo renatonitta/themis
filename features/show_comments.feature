@@ -6,5 +6,4 @@ Feature: Show comments
     Then I should see "Add comment"
 
     When I follow "Add comment"
-    And I wait for disqus
     Then I should see "Disqus"
