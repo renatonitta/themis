@@ -14,10 +14,17 @@ describe PostsController do
     end
 
     describe "GET show" do
+      let(:post) { Factory :post, :section => section }
+
       it "should assign the post to @post" do
-        post = Factory :post, :section => section
         get :show, :section_id => section.id, :id => post.id
         assigns(:post).should == post
+      end
+
+      it "should assign all sections as @sections" do
+        2.times { Factory :section }
+        get :show, :section_id => section.id, :id => post.id
+        assigns(:sections).should == Section.all
       end
     end
 
