@@ -48,7 +48,7 @@ describe PostsController do
         Factory :post, :tag_list => 'tag2'
         Factory :approved_post, :tag_list => 'tag2'
         Factory :approved_post, :tag_list => 'tag3'
-        get :by_tag, :id => 'tag2'
+        get :by_tag, :tag => 'tag2'
         assigns(:posts).size.should == 1
       end
     end
