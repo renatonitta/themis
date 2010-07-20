@@ -10,7 +10,7 @@ class PostsController < InheritedResources::Base
   end
 
   def by_tag
-    @posts = Post.tagged_with params[:id]
+    @posts = Post.approved.tagged_with params[:id]
     render :index
   end
 

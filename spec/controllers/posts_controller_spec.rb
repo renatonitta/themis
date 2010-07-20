@@ -44,12 +44,12 @@ describe PostsController do
     end
 
     describe "GET by_tag" do
-      it "should return all the posts with the specific tag" do
-        Factory :post, :tag_list => 'tag1, tag2'
+      it "should return all the approved posts with the specific tag" do
         Factory :post, :tag_list => 'tag2'
-        Factory :post, :tag_list => 'tag3'
+        Factory :approved_post, :tag_list => 'tag2'
+        Factory :approved_post, :tag_list => 'tag3'
         get :by_tag, :id => 'tag2'
-        assigns(:posts).size.should == 2
+        assigns(:posts).size.should == 1
       end
     end
 
