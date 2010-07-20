@@ -1,7 +1,7 @@
 .posts
   - @posts.each do |post|
     .post
-      .title= post.title.to_html
+      .title= post.title
       .user= post.author.name
       .date= post.created_at
       .body= raw post.body.to_html
