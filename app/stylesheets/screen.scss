@@ -37,6 +37,17 @@ body {
   $content-columns: $blueprint-grid-columns - $sidebar-columns;
   #sidebar {
     @include column($sidebar-columns, true);
+
+    #search { 
+      input[type=text] {
+        width: 150px;
+      }
+
+      input[type=submit] {
+        float: right;
+        margin-top: 5px;
+      }
+    }
   }
 
   #content {
