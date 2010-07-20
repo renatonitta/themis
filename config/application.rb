@@ -17,7 +17,9 @@ module Themis
     config.encoding = "utf-8"
 
     config.to_prepare { 
-      Devise::SessionsController.layout "admin" 
+      [Devise::SessionsController, Devise::RegistrationsController].each do |controller|
+        controller.layout "admin" 
+      end
     } 
 
     # Configure sensitive parameters which will be filtered from the log file.
