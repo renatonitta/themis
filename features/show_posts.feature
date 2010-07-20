@@ -4,3 +4,4 @@ Feature: Show Posts
     Given 5 posts exist
     When I go to the home page
     Then I should see 5 posts
+    And I should see 5 sections

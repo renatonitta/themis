@@ -17,6 +17,11 @@
       #content= yield
       #sidebar
         #search
+          .sections
+            - @sections.each do |section|
+              .section
+                .name= section.name
+
           = form_tag 'http://google.com/search', :method => :get do
             = hidden_field_tag :sitesearch, request.host
             = text_field_tag :q
