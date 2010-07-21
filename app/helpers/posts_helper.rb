@@ -1,6 +1,6 @@
 module PostsHelper
   def tags_for(posts)
-    posts.map {|p| p.tags.map {|t| t.name} }.flatten.uniq.join(', ')
+    posts.map {|p| p.tags.map(&:name) }.flatten.uniq.join(', ')
   end
 
   def keywords
