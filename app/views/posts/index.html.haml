@@ -8,3 +8,5 @@
     .comments
       = link_to("Add comment", section_post_path(post.section, post, :anchor => "disqus_thread"))
       = raw disqus_comment_counts
+.paginate
+  = will_paginate @posts
