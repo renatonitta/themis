@@ -24,3 +24,4 @@ Feature: Show Posts
     Given 5 approved posts exist
     When I visit "/posts.rss"
     Then I should see 5 rss items
+    And I should see blog information 

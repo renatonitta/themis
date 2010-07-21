@@ -21,3 +21,8 @@ Then /^I should see the search form$/ do
   page.should have_xpath("//input[@name='q'][@type='text']")
   page.should have_xpath("//input[@name='commit'][@type='submit'][@value='Search']")
 end
+
+Then /^I should see blog information$/ do
+  page.should have_content(Themis::Config['name'])
+  page.should have_content(Themis::Config['description'])
+end

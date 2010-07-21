@@ -1,3 +1,6 @@
+name: "Themis"
+description: "Themis blog"
+
 google_analytics:
   tracker_id: 'UA-12345-67'
 
@@ -12,3 +15,5 @@ disqus:
 
 paginate:
   per_page: 5
+
+
