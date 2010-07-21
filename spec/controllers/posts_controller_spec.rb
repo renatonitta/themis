@@ -19,6 +19,12 @@ describe PostsController do
           get :index, :section_id => section.id, :format => format
           assigns(:posts).size.should == section.posts.approved.size
         end
+
+        it "should return only approved posts paginated by section" do
+          (controller.class::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+          get :index, :section_id => section.id, :page => 2
+          assigns(:posts).size.should == 1
+        end
       end
     end
 
