@@ -60,6 +60,12 @@ describe PostsController do
         get :by_tag, :tag => 'tag2'
         assigns(:posts).size.should == 1
       end
+
+      it "should return all approved posts with the specific tag paginated" do
+        (controller.class::PER_PAGE + 1).times { Factory :approved_post, :tag_list => 'tag'}
+        get :by_tag, :tag => 'tag', :page => 2
+        assigns(:posts).size.should == 1 
+      end
     end
 
     describe "POST create" do
