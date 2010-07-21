@@ -1,4 +1,6 @@
 Themis::Application.routes.draw do |map|
+  devise_for :admins
+
   resources :sections do
     resources :posts do
       member do
