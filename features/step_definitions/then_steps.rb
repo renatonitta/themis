@@ -6,8 +6,8 @@ Then /^I should see (\d+) rss items$/ do |count|
   Nokogiri::XML(page.body).css("item").size.should == count.to_i
 end
 
-Then /^I should see page's keywords$/ do
-  page.should have_xpath("//meta[@name='keywords']")
+Then /^I should see "([^\"]*)" as keyword$/ do |keyword|
+  page.should have_xpath("//meta[@name='keywords'][@content='#{keyword}']")
 end
 
 Then /^I should see "([^\"]*)" tags as html meta tags$/ do |title|
