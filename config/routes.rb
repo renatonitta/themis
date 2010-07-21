@@ -1,6 +1,5 @@
 Themis::Application.routes.draw do |map|
-  devise_for :admins
-
+  devise_for :admins, :users
   resources :sections do
     resources :posts do
       member do
@@ -8,7 +7,6 @@ Themis::Application.routes.draw do |map|
       end
     end
   end
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   match 'tags/:tag', :to => 'posts#by_tag', :as => 'tags'
   match 'posts.:format', :to => 'posts#all'
   root :to => "posts#all"
