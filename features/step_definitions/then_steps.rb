@@ -26,3 +26,11 @@ Then /^I should see blog information$/ do
   page.should have_content(Themis::Config['name'])
   page.should have_content(Themis::Config['description'])
 end
+
+Then /^I should see blog rss$/ do
+  page.should have_xpath("//link[@type='application/rss+xml'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}']")
+end
+
+Then /^I should see section "([^\"]*)" rss$/ do |section|
+  page.should have_xpath("//link[@type='application/rss+xml'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}#{section.capitalize}']")
+end

@@ -6,6 +6,7 @@ Feature: Show Posts
     Then I should see 5 posts
     And I should see 7 sections
     And I should see "ror" as keyword
+    And I should see blog rss
     And I should see "Next" 
 
     When I follow "Next"
@@ -19,6 +20,7 @@ Feature: Show Posts
     When I go to Textile's post page
     Then I should see "textile" within "strong"
     And I should see "ror" as keyword
+    And I should see section "About" rss
 
   Scenario: RSS
     Given 5 approved posts exist
