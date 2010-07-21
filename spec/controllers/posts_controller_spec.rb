@@ -108,5 +108,13 @@ describe PostsController do
         Post.last.author.should_not == controller.current_user
       end
     end
+
+    describe "PUT approve" do
+      it "should approve a post" do
+        post = Factory :post
+        put :approve, :section_id => section.id, :id => post.id
+        Post.find(post.id).should be_approved
+      end
+    end
   end
 end

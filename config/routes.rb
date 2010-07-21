@@ -2,7 +2,7 @@ Themis::Application.routes.draw do |map|
   resources :sections do
     resources :posts do
       member do
-        match 'approve' => 'posts#approve', :as => 'approve'
+        match 'approve' => 'posts#approve'
       end
     end
   end

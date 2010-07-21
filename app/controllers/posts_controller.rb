@@ -10,6 +10,10 @@ class PostsController < InheritedResources::Base
     render :index
   end
 
+  def approve
+    resource.approve!
+  end
+
   def by_tag
     @posts = Post.approved.tagged_with params[:tag]
     render :index
