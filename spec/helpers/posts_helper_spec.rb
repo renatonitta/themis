@@ -12,7 +12,7 @@ describe PostsHelper do
     context "given there are some posts" do
       it "should return the posts' tags" do
         @posts = ['ruby, rails', 'rails, blog', 'test'].map { |tag_list| Factory(:post, :tag_list => tag_list) }
-        keywords.should be_eql('ruby, rails, blog, test')
+        keywords.should == 'ruby, rails, blog, test'
       end
     end
   end
