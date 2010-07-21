@@ -1,5 +1,5 @@
 class PostsController < InheritedResources::Base
-  PER_PAGE = Themis::Config['paginate']['per_page']
+  PER_PAGE = 5
 
   respond_to :rss
   belongs_to :section
