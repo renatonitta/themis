@@ -8,6 +8,16 @@ module PostsHelper
   end
 
   def rss_link
-    "http://feeds.feedburner.com/" + Themis::Config['name'].delete(' ') + (@section.present? ? @section.name.capitalize : '')
+    "http://feeds.feedburner.com/#{Themis::Config['name']}#{section_name}".delete(' ')
+  end
+
+  def rss_title
+    "#{Themis::Config['name']}#{section_name}"
+  end
+
+  private
+
+  def section_name
+    @section.present? ? ' ' + @section.name.capitalize : ''
   end
 end

@@ -35,4 +35,23 @@ describe PostsHelper do
       end
     end
   end
+
+  context "on #rss_title" do
+    before :each do
+      Themis::Config['name'] = 'Blog Themis'
+    end
+
+    context "given there is a section" do
+      it "should return section rss link" do
+        @section = Factory(:section, :name => 'section')
+        rss_title.should == "Blog Themis Section"
+      end
+    end
+
+    context "given there is no section" do
+      it "should return blog rss link" do
+        rss_title.should == "Blog Themis"
+      end
+    end
+  end
 end
