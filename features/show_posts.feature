@@ -6,10 +6,20 @@ Feature: Show Posts
     | ruby, rails |
     | rails, blog |
     | test        |
+    | gonow       |
+    | labs        |
+    | world, cup  |
+    | mac, linux  |
     When I go to the home page
-    Then I should see 3 posts
-    And I should see 3 sections
-    And I should see "ruby, rails, blog, test" as html meta tags
+    Then I should see 5 posts
+    And I should see 7 sections
+    And I should see "ruby, rails, blog, test, gonow, labs" as html meta tags
+    And I should see "Next" 
+
+    When I follow "Next"
+    Then I should see 2 posts
+    And I should see "world, cup, mac, linux" as html meta tags
+    And I should see "Previous" 
 
   Scenario: Textile
     Given a section exists with name: "About"
