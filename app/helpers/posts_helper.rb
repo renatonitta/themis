@@ -4,6 +4,6 @@ module PostsHelper
   end
 
   def keywords
-    @post.present? ? @post.tag_list : tags_for(@posts)
+    @post.present? ? @post.tag_list.to_s : tags_for(@posts)
   end
 end
