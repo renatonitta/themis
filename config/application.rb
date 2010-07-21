@@ -24,12 +24,5 @@ module Themis
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
-    {:account => 'gonowlabs', :developer => true,
-      :default_tab => 'popular', :color => 'grey',  
-      :hide_mods => true, :num_items => 10, :show_powered_by => true
-    }.each do |key, value|
-      Disqus::defaults[key] = value
-    end
   end
 end
