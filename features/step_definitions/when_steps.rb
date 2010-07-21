@@ -12,3 +12,9 @@ When /^I fill the new user form$/ do
   When %{I fill in "Password" with "password"}
   When %{I fill in "Password confirmation" with "password"}
 end
+
+When /^I approve the post$/ do
+  post = model('post')
+  visit edit_section_post_path(post.section, post)
+  click 'Approve'
+end

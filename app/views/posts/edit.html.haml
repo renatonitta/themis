@@ -2,6 +2,4 @@
 
 = render 'form'
 
-= link_to 'Show', @post
-\|
-= link_to 'Back', posts_path
+= button_to "Approve", section_post_approve_path(@section, @post), :method => :put
