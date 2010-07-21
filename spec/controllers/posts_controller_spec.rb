@@ -82,6 +82,13 @@ describe PostsController do
         response.code.should eql("302")
       end
     end
+
+    describe "PUT approve" do
+      it "should return 302 as the status code" do
+        put :approve, :section_id => section.id, :id => 30
+        response.code.should eql("302")
+      end
+    end
   end
 
   context "with a logged user" do
