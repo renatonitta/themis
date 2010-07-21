@@ -9,3 +9,6 @@ disqus:
   num_items: 10
   show_powered_by: true
   developer: true
+
+paginate:
+  per_page: 5
