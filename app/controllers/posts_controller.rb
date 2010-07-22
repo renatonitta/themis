@@ -1,6 +1,8 @@
 class PostsController < InheritedResources::Base
   PER_PAGE = 5
 
+  caches_page :all
+
   respond_to :rss
   belongs_to :section
   before_filter :assign_sections

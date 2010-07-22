@@ -56,6 +56,12 @@ describe PostsController do
         get :all
         assigns(:posts).size.should == Post.approved.size
       end
+
+      it "should cache the page" do
+        2.times { Factory :approved_post }
+        get :all
+        Dir["#{Rails.public_path}/index.html"].empty?.should be_false
+      end
     end
 
     describe "GET by_tag" do
@@ -148,5 +154,9 @@ describe PostsController do
         Post.find(post.id).should be_approved
       end
     end
+  end
+
+  after :all do
+    clear_cache!
   end
 end
