@@ -60,7 +60,7 @@ describe PostsController do
       it "should cache the page" do
         2.times { Factory :approved_post }
         get :all
-        Dir["#{Rails.public_path}/index.html"].empty?.should be_false
+        File.exist?("#{Rails.public_path}/index.html").should be_true
       end
     end
 
@@ -128,7 +128,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+        File.exist?("#{Rails.public_path}/index.html").should be_false
       end
     end
 
@@ -141,7 +141,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
-        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+        File.exist?("#{Rails.public_path}/index.html").should be_false
       end
     end
 
@@ -154,7 +154,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         delete :destroy, :section_id => section.id, :id => @post.id
-        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+        File.exist?("#{Rails.public_path}/index.html").should be_false
       end
     end
 
@@ -181,7 +181,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         put :approve, :section_id => section.id, :id => @post.id
-        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+        File.exist?("#{Rails.public_path}/index.html").should be_false
       end
     end
   end
