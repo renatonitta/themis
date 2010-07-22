@@ -129,6 +129,19 @@ describe PostsController do
     end
 
     describe "PUT approve" do
+      it "return 302 as the status code" do
+        put :approve, :section_id => section.id, :id => 5
+        response.code.should eql('302')
+      end
+    end
+  end
+
+  context "with a logged approver user" do
+    before :each do
+      sign_in Factory(:approver_user)
+    end
+
+    describe "PUT approve" do
       it "should approve a post" do
         post = Factory :post
         put :approve, :section_id => section.id, :id => post.id

@@ -8,3 +8,7 @@ Factory.define :user do |f|
   f.email { Sham.email }
   f.password 'dcrec1'
 end
+
+Factory.define :approver_user, :parent => :user do |f|
+  f.approver true
+end

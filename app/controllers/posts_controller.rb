@@ -5,6 +5,7 @@ class PostsController < InheritedResources::Base
   belongs_to :section
   before_filter :assign_sections
   before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy]
+  before_filter :authenticate_approver, :only => [:approve]
   before_filter :assign_user, :only => [:create]
 
   def all
@@ -21,7 +22,7 @@ class PostsController < InheritedResources::Base
     render :index
   end
 
-  protected
+  private
 
   def resource
     @post = Post.find params[:id]
@@ -31,7 +32,9 @@ class PostsController < InheritedResources::Base
     @posts = end_of_association_chain.approved.paginate :page => params[:page], :per_page => PER_PAGE 
   end
 
-  private
+  def authenticate_approver
+    render :status => 302 unless current_user.approver?
+  end
 
   def assign_sections
     @sections = Section.all
