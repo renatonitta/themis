@@ -1,10 +1,6 @@
-task :build => ['db:migrate', :spec] do
-  system 'rm rerun.txt'
-  execute_command 'cucumber'
+task :prepare do
+  system "rm rerun.txt"
+  system "bundle install"
 end
 
-private
-
-def execute_command(cmd)
-  raise unless system cmd
-end
+task :build => [:prepare, 'db:migrate', :spec, :cucumber]
