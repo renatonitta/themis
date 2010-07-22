@@ -1,5 +1,5 @@
 --- 
-hash: 3f394cc51a127c4dc8cfb5f9af8993165ffa849c
+hash: 50768cca0a96e9ddf5ecdb64217f570266fbc893
 sources: 
 - Git: 
     git: git://github.com/indirect/rails3-generators.git
@@ -139,6 +139,8 @@ specs:
     version: 1.6.3
 - launchy: 
     version: 0.3.7
+- mysql: 
+    version: 2.8.1
 - pickle: 
     version: 0.3.0
     source: 1
@@ -177,9 +179,14 @@ dependencies:
   sqlite3-ruby: 
     version: ">= 0"
     group: 
-    - :default
+    - :development
+    - :test
     require: 
     - sqlite3
+  mysql: 
+    version: ">= 2.8.1"
+    group: 
+    - :production
   haml: 
     version: ">= 3.0.4"
     group: 
