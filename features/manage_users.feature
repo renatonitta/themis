@@ -12,6 +12,6 @@ Feature: Manage users
     And an user exists
     When I go to the user edition path
     And I check "Approver?"
-    And I press "Update User"
+    And I click "Update User"
     Then the user should be an approver
 
