@@ -14,6 +14,7 @@ class PostsController < InheritedResources::Base
 
   def approve
     resource.approve!
+    render 'show'
   end
 
   def by_tag
