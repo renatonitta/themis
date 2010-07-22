@@ -66,10 +66,9 @@ describe PostsController do
 
     describe "GET by_tag" do
       it "should return all the approved posts with the specific tag" do
-        Factory :post, :tag_list => 'tag2'
-        Factory :approved_post, :tag_list => 'tag2'
-        Factory :approved_post, :tag_list => 'tag3'
-        get :by_tag, :tag => 'tag2'
+        Factory :post, :tag_list => 'tag1'
+        2.times {|i| Factory :approved_post, :tag_list => "tag#{i}" }
+        get :by_tag, :tag => 'tag1'
         assigns(:posts).size.should == 1
       end
 
@@ -112,6 +111,7 @@ describe PostsController do
   context "with a logged user" do
     before :each do
       sign_in Factory(:user)
+      @post = Factory :post, :section => section
     end
 
     describe "POST create" do
@@ -124,13 +124,37 @@ describe PostsController do
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
         Post.last.section.should eql(section)
       end
+
+      it "should clear all pages cached" do
+        get :all
+        post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
+        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+      end
     end
 
     describe "PUT update" do
       it "should not update the owner" do
-        post = Factory(:post, :section => section)
-        put :update, :section_id => section.id, :id => post.id, :post => { :title => "Title", :body => "Body" }
+        put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
         Post.last.author.should_not == controller.current_user
+      end
+
+      it "should clear all pages cached" do
+        get :all
+        put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
+        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "should delete a post" do
+        delete :destroy, :section_id => section.id, :id => @post.id 
+        Post.find_by_id(@post.id).should be_nil
+      end
+
+      it "should clear all pages cached" do
+        get :all
+        delete :destroy, :section_id => section.id, :id => @post.id
+        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
       end
     end
 
@@ -145,18 +169,24 @@ describe PostsController do
   context "with a logged approver user" do
     before :each do
       sign_in Factory(:approver_user)
+      @post = Factory :post
     end
 
     describe "PUT approve" do
       it "should approve a post" do
-        post = Factory :post
-        put :approve, :section_id => section.id, :id => post.id
-        Post.find(post.id).should be_approved
+        put :approve, :section_id => section.id, :id => @post.id
+        Post.find(@post.id).should be_approved
+      end
+
+      it "should clear all pages cached" do
+        get :all
+        put :approve, :section_id => section.id, :id => @post.id
+        Dir["#{Rails.public_path}/index.html"].empty?.should be_true
       end
     end
   end
 
-  after :all do
+  after :each do
     clear_cache!
   end
 end

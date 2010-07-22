@@ -27,5 +27,5 @@ RSpec.configure do |config|
 end
 
 def clear_cache!
-  File.delete("#{Rails.public_path}/index.html") 
+  File.delete("#{Rails.public_path}/index.html") if File.exist?("#{Rails.public_path}/index.html") 
 end
