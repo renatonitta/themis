@@ -9,7 +9,7 @@ class PostsController < InheritedResources::Base
   before_filter :assign_user, :only => [:create]
 
   def all
-    paginate Post.approved
+    paginate resource_class.approved
   end
 
   def approve
@@ -18,13 +18,13 @@ class PostsController < InheritedResources::Base
   end
 
   def by_tag
-    paginate Post.approved.tagged_with(params[:tag])
+    paginate resource_class.approved.tagged_with(params[:tag])
   end
 
   private
 
   def resource
-    @post = Post.find params[:id]
+    @post = resource_class.find params[:id]
   end
 
   def collection
