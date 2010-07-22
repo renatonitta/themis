@@ -14,7 +14,6 @@ When /^I fill the new user form$/ do
 end
 
 When /^I approve the post$/ do
-  post = model('post')
-  visit edit_section_post_path(post.section, post)
+  When %{I go to the post edition path}
   click 'Approve'
 end

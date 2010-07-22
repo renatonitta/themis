@@ -2,4 +2,5 @@
 
 = render 'form'
 
-= button_to "Approve", section_post_approve_path(@section, @post), :method => :put
+- if current_user.approver?
+  = button_to "Approve", section_post_approve_path(@section, @post), :method => :put

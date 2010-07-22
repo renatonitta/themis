@@ -21,6 +21,10 @@ module NavigationHelpers
     when /new user page/
       new_user_path
 
+    when /the post edition path/
+      post = model('post')
+      edit_section_post_path(post.section, post)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
