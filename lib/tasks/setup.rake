@@ -1,5 +1,5 @@
 namespace :db do
-  task :create_user => :environment do
-    User.create! :name => 'User', :email => 'user@themis.com', :password => 'themis'
+  task :create_admin => :environment do
+    Admin.create! :email => 'admin@themis.com', :password => 'themis'
   end
 end
