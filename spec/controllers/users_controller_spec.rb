@@ -16,13 +16,13 @@ describe UsersController do
     end
   end
 
-  context "with a logged iuser" do
+  context "with a logged user" do
     before :each do
       sign_in Factory(:user)
     end
 
     describe "responding to POST create" do
-      it "should return 306 as the status code" do
+      it "should return 302 as the status code" do
         post :create, :user => { :name => "Mike Tyson", :email => "mike@tyson.com", :password => "mike123" }   
         response.code.should eql("302")
       end
