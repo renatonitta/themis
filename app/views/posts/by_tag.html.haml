@@ -1,0 +1,12 @@
+.posts
+  - @posts.each do |post|
+    .post
+      .title= post.title
+      .user= post.author.name
+      .date= post.created_at
+      .body= raw post.body.to_html
+    .comments
+      = link_to("Add comment", section_post_path(post.section, post, :anchor => "disqus_thread"))
+      = raw disqus_comment_counts
+.paginate
+  = will_paginate @posts
