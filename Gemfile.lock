@@ -1,5 +1,5 @@
 --- 
-hash: a89bdb024ccec522471c1296b2b98ede5be4b620
+hash: 3f394cc51a127c4dc8cfb5f9af8993165ffa849c
 sources: 
 - Git: 
     git: git://github.com/indirect/rails3-generators.git
@@ -10,14 +10,14 @@ sources:
     uri: git://github.com/codegram/pickle.git
     ref: 28342043ff338f1f3661c4f263afd2baa2ec45ae
 - Git: 
-    git: http://github.com/rubyist/aasm.git
-    uri: http://github.com/rubyist/aasm.git
+    git: git://github.com/rubyist/aasm.git
+    uri: git://github.com/rubyist/aasm.git
     ref: 690137c5e5eb68ea36edbb029fd22a043fe63de5
 - Git: 
     git: git://github.com/justinfrench/formtastic.git
     branch: rails3
     uri: git://github.com/justinfrench/formtastic.git
-    ref: 038357cae3fbe4ce9d648249a4c6d0b1f520a1f4
+    ref: e7e29b638210b989cf79c16d787bdc81462e6621
 - Rubygems: 
     uri: http://rubygems.org
 specs: 
@@ -83,7 +83,7 @@ specs:
 - rubyzip: 
     version: 0.9.4
 - selenium-webdriver: 
-    version: 0.0.26
+    version: 0.0.27
 - capybara: 
     version: 0.3.9
 - haml: 
@@ -125,7 +125,7 @@ specs:
 - factory_girl_rails: 
     version: "1.0"
 - formtastic: 
-    version: 1.0.0.beta
+    version: 1.0.0.beta2
     source: 3
 - friendly_id: 
     version: 3.0.6
