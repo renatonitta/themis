@@ -7,9 +7,10 @@ class PostsController < InheritedResources::Base
   before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy]
   before_filter :authenticate_approver, :only => [:approve]
   before_filter :assign_user, :only => [:create]
+  after_filter :paginate, :only => [:all, :index, :by_tag]
 
   def all
-    @posts = Post.approved.paginate :page => params[:page], :per_page => PER_PAGE 
+    @posts = Post.approved
     render :index
   end
 
@@ -18,7 +19,7 @@ class PostsController < InheritedResources::Base
   end
 
   def by_tag
-    @posts = Post.approved.tagged_with(params[:tag]).paginate :page => params[:page], :per_page => PER_PAGE 
+    @posts = Post.approved.tagged_with(params[:tag])
     render :index
   end
 
@@ -29,7 +30,11 @@ class PostsController < InheritedResources::Base
   end
 
   def collection
-    @posts = end_of_association_chain.approved.paginate :page => params[:page], :per_page => PER_PAGE 
+    @posts = end_of_association_chain.approved
+  end
+
+  def paginate
+    @posts = @posts.paginate :page => params[:page], :per_page => PER_PAGE
   end
 
   def authenticate_approver
