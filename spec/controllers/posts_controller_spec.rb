@@ -72,6 +72,11 @@ describe PostsController do
         get :by_tag, :tag => 'tag', :page => 2
         assigns(:posts).size.should == 1 
       end
+
+      it "should assign the tag to @tag" do
+        get :by_tag, :tag => "cool"
+        assigns(:tag).should eql("cool")
+      end
     end
 
     describe "POST create" do

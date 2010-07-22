@@ -18,7 +18,8 @@ class PostsController < InheritedResources::Base
   end
 
   def by_tag
-    paginate resource_class.approved.tagged_with(params[:tag])
+    @tag = params[:tag]
+    paginate resource_class.approved.tagged_with(@tag)
   end
 
   private
