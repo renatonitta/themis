@@ -4,7 +4,7 @@ class PostsController < InheritedResources::Base
   respond_to :rss
   belongs_to :section
   before_filter :assign_sections
-  before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy, :new]
   before_filter :authenticate_approver, :only => [:approve]
   before_filter :assign_user, :only => [:create]
 

@@ -124,6 +124,13 @@ describe PostsController do
         response.code.should eql("302")
       end
     end
+
+    describe "GET new" do
+      it "should return 302 as the status code" do
+        get :new, :section_id => section.id
+        response.code.should eql("302")
+      end
+    end
   end
 
   context "with a logged user" do
