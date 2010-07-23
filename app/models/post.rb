@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
+  PER_PAGE = 5
   include AASM
 
+  default_scope :order => ["created_at DESC"]
   belongs_to :author, :class_name => 'User', :foreign_key => "user_id"
   belongs_to :section
   validates_presence_of :title, :body, :author, :section

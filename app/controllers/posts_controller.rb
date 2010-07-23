@@ -1,6 +1,4 @@
 class PostsController < InheritedResources::Base
-  PER_PAGE = 5
-
   respond_to :rss
   belongs_to :section
   before_filter :assign_sections
@@ -35,7 +33,7 @@ class PostsController < InheritedResources::Base
   end
 
   def paginate(posts)
-    @posts = posts.paginate :page => params[:page], :per_page => PER_PAGE, :order => ['created_at DESC']
+    @posts = posts.paginate :page => params[:page], :per_page => Post::PER_PAGE
   end
 
   def authenticate_approver
