@@ -1,17 +1,10 @@
-.post
-  %p
-    %b Title:
-    = @post.title
-  %p
-    %b Tag list:
-    - @post.tags.each do |tag|
-      = link_to(tag.name, tags_path(tag.name))
-  %p
-    %b Body:
-    = raw @post.body.to_html
-  %p
-    %b Author:
-    = @post.author.name
-.comments
-  %p
-    = raw disqus_thread
+= render :layout => "layouts/public" do
+  .post
+    .title= @post.title
+    .author= @post.author.name
+    .date= @post.created_at
+    .body= raw @post.body.to_html
+    .tags 
+      - @post.tags.map do |tag| 
+        = link_to tag.name, tags_path(tag.name)
+    .comments= raw disqus_thread

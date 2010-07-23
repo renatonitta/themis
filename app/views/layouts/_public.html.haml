@@ -1,0 +1,17 @@
+= yield
+
+- content_for :head do
+  %meta{ :name => "keywords", :content => keywords }
+  %link{ :rel => "alternate", :type => "application/rss+xml", :title => rss_title, :href => rss_link}
+  = render "google_analytics"
+
+- content_for :sidebar do
+  = form_tag 'http://google.com/search', :method => :get do
+    = hidden_field_tag :sitesearch, request.host
+    = text_field_tag :q
+    = submit_tag t(:search)
+
+  .sections
+    - @sections.each do |section|
+      .section
+        .name= link_to section.name, section_posts_path(section)

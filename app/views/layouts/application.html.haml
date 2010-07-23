@@ -2,10 +2,7 @@
 !!!
 %html
   %head
-    %title My application
-    %meta{ :name => "keywords", :content => keywords }
-    %link{ :rel => "alternate", :type => "application/rss+xml", :title => rss_title, :href => rss_link}
-
+    %title= configuration['name']
     = stylesheet_link_tag 'screen', :media => 'screen, projection'
     = stylesheet_link_tag 'print', :media => 'print'
     /[if lt IE 8]
@@ -14,20 +11,11 @@
     %script{ :type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" }
     = javascript_include_tag :all
     = csrf_meta_tag
-    = render "google_analytics"
+    = yield :head
   %body
     #container
-      #header HEADER
+      #header
+        %h1= link_to configuration['name'], root_path
       #content= yield
-      #sidebar
-        #search
-          .sections
-            - @sections.each do |section|
-              .section
-                .name= section.name
-
-          = form_tag 'http://google.com/search', :method => :get do
-            = hidden_field_tag :sitesearch, request.host
-            = text_field_tag :q
-            = submit_tag t(:search)
+      #sidebar= yield :sidebar
       #footer FOOTER
