@@ -27,6 +27,5 @@ RSpec.configure do |config|
 end
 
 def clear_cache!
-  File.delete("#{Rails.public_path}/index.html") rescue nil
-  FileUtils.rm_rf("#{Rails.public_path}/sections") rescue nil
+  FileUtils.rm_rf(Dir.glob("#{Rails.public_path}/cache/*")) rescue nil
 end

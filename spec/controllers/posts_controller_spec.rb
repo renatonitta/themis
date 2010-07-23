@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe PostsController do
   include Devise::TestHelpers
+  CACHE_PATH = "#{Rails.public_path}/cache"
 
   let(:section) { Factory :section }
 
@@ -26,6 +27,12 @@ describe PostsController do
           assigns(:posts).size.should == 1
         end
       end
+
+      it "should paginate and cache the page" do
+        (controller.class::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+        get :index, :section_id => section.id, :page => 2
+        File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
+      end
     end
 
     describe "GET show" do
@@ -44,7 +51,7 @@ describe PostsController do
 
       it "should cache the page" do
         get :show, :section_id => section.id, :id => post.id
-        File.exist?("#{Rails.public_path}/sections/#{section.id}/posts/#{post.id}.html").should be_true
+        File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{post.id}.html").should be_true
       end
     end
 
@@ -65,7 +72,7 @@ describe PostsController do
       it "should cache the page" do
         2.times { Factory :approved_post }
         get :all
-        File.exist?("#{Rails.public_path}/index.html").should be_true
+        File.exist?("#{CACHE_PATH}/index.html").should be_true
       end
     end
 
@@ -133,7 +140,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        File.exist?("#{Rails.public_path}/index.html").should be_false
+        File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
 
@@ -146,7 +153,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
-        File.exist?("#{Rails.public_path}/index.html").should be_false
+        File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
 
@@ -159,7 +166,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         delete :destroy, :section_id => section.id, :id => @post.id
-        File.exist?("#{Rails.public_path}/index.html").should be_false
+        File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
 
@@ -186,7 +193,7 @@ describe PostsController do
       it "should clear all pages cached" do
         get :all
         put :approve, :section_id => section.id, :id => @post.id
-        File.exist?("#{Rails.public_path}/index.html").should be_false
+        File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
   end
