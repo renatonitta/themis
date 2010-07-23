@@ -6,9 +6,13 @@ Themis::Application.routes.draw do |map|
       member do
         match 'approve' => 'posts#approve', :as => 'approve'
       end
+      collection do
+        match 'pages/:page' => 'posts#index', :as => 'page'
+      end
     end
   end
   match 'tags/:tag', :to => 'posts#by_tag', :as => 'tags'
   match 'posts.:format', :to => 'posts#all'
+  match 'posts/pages/:page', :to => 'posts#all', :as => 'posts_page'
   root :to => "posts#all"
 end

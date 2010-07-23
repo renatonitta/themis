@@ -15,6 +15,8 @@ module Themis
     end
 
     config.encoding = "utf-8"
+    
+    config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
 
     config.to_prepare { 
       [Devise::SessionsController, Devise::RegistrationsController].each do |controller|

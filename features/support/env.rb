@@ -6,11 +6,11 @@
 
 require 'rubygems'
 require 'spork'
- 
+
 Spork.prefork do
   ENV["RAILS_ENV"] ||= "test"
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
-  
+
   require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
   require 'cucumber/rails/rspec'
   require 'cucumber/rails/world'
@@ -29,7 +29,7 @@ Spork.prefork do
   Capybara.default_selector = :css
 
 end
- 
+
 Spork.each_run do
   # If you set this to false, any error raised from within your app will bubble 
   # up to your step definition and out to cucumber unless you catch it somewhere
@@ -41,7 +41,7 @@ Spork.each_run do
   # default production environment. It's not recommended to do this for all
   # of your scenarios, as this makes it hard to discover errors in your application.
   ActionController::Base.allow_rescue = false
-  
+
   # If you set this to true, each scenario will run in a database transaction.
   # You can still turn off transactions on a per-scenario basis, simply tagging 
   # a feature or scenario with the @no-txn tag. If you are using Capybara,
@@ -64,4 +64,8 @@ Spork.each_run do
     rescue LoadError => ignore_if_database_cleaner_not_present
     end
   end
+end
+
+After do
+  FileUtils.rm_rf(Dir.glob("#{Rails.public_path}/cache/*")) rescue nil
 end

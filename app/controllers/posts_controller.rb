@@ -1,12 +1,13 @@
 class PostsController < InheritedResources::Base
-  PER_PAGE = 5
-
   respond_to :rss
   belongs_to :section
   before_filter :assign_sections
-  before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy, :new]
   before_filter :authenticate_approver, :only => [:approve]
   before_filter :assign_user, :only => [:create]
+
+  caches_page :all, :index, :show
+  cache_sweeper :post_sweeper
 
   def all
     paginate resource_class.approved
@@ -33,7 +34,7 @@ class PostsController < InheritedResources::Base
   end
 
   def paginate(posts)
-    @posts = posts.paginate :page => params[:page], :per_page => PER_PAGE
+    @posts = posts.paginate :page => params[:page], :per_page => Post::PER_PAGE
   end
 
   def authenticate_approver

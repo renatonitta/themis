@@ -25,3 +25,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+def clear_cache!
+  FileUtils.rm_rf(Dir.glob("#{Rails.public_path}/cache/*")) rescue nil
+end
