@@ -1,5 +1,6 @@
 = render :layout => "layouts/public" do
-  %h2= title
+  - if defined?(title)
+    %h2= title
 
   .posts
     - posts.each do |post|
