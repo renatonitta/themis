@@ -8,7 +8,7 @@ class PostsController < InheritedResources::Base
   before_filter :authenticate_approver, :only => [:approve]
   before_filter :assign_user, :only => [:create]
 
-  caches_page :all
+  caches_page :all, :index, :show
   cache_sweeper :post_sweeper
 
   def all

@@ -13,5 +13,6 @@ class PostSweeper < ActionController::Caching::Sweeper
   
   def expire_cache(record)
     expire_page(root_path)
+    expire_page(section_posts_path(record.section))
   end
 end

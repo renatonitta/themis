@@ -41,6 +41,11 @@ describe PostsController do
         get :show, :section_id => section.id, :id => post.id
         assigns(:sections).should == Section.all
       end
+
+      it "should cache the page" do
+        get :show, :section_id => section.id, :id => post.id
+        File.exist?("#{Rails.public_path}/sections/#{section.id}/posts/#{post.id}.html").should be_true
+      end
     end
 
     describe "GET all" do
