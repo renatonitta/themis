@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe PostsController do
   include Devise::TestHelpers
-  CACHE_PATH = "#{Rails.public_path}/cache"
+  CACHE_PATH = Themis::Application.config.action_controller.page_cache_directory
+
+  before :each do
+    clear_cache!
+  end
 
   let(:section) { Factory :section }
 
@@ -22,7 +26,7 @@ describe PostsController do
         end
 
         it "should return only approved posts paginated by section" do
-          (controller.class::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+          (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
           get :index, :section_id => section.id, :page => 2
           assigns(:posts).size.should == 1
         end
@@ -35,7 +39,7 @@ describe PostsController do
       end
 
       it "should paginate and cache the page" do
-        (controller.class::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+        (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
         get :index, :section_id => section.id, :page => 2
         File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
       end
@@ -76,7 +80,6 @@ describe PostsController do
       end
 
       it "should cache the page" do
-        2.times { Factory :approved_post }
         get :all
         File.exist?("#{CACHE_PATH}/index.html").should be_true
       end
@@ -91,7 +94,7 @@ describe PostsController do
       end
 
       it "should return all approved posts with the specific tag paginated" do
-        (controller.class::PER_PAGE + 1).times { Factory :approved_post, :tag_list => 'tag'}
+        (Post::PER_PAGE + 1).times { Factory :approved_post, :tag_list => 'tag'}
         get :by_tag, :tag => 'tag', :page => 2
         assigns(:posts).size.should == 1 
       end
@@ -150,10 +153,16 @@ describe PostsController do
         Post.last.section.should eql(section)
       end
 
-      it "should clear all pages cached" do
+      it "should expire cache index" do
         get :all
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
         File.exist?("#{CACHE_PATH}/index.html").should be_false
+      end
+
+      it "should expire page cache after create" do
+        get :index, :section_id => section.id, :page => 1
+        post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
+        File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/1.html").should be_false
       end
     end
 
@@ -163,10 +172,16 @@ describe PostsController do
         Post.last.author.should_not == controller.current_user
       end
 
-      it "should clear all pages cached" do
+      it "should expire cache index" do
         get :all
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
         File.exist?("#{CACHE_PATH}/index.html").should be_false
+      end
+
+      it "should expire the relative page" do
+        get :show, :section_id => section.id, :id => @post.id
+        put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
+        File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{@post.id}.html").should be_false
       end
     end
 
@@ -176,7 +191,7 @@ describe PostsController do
         Post.find_by_id(@post.id).should be_nil
       end
 
-      it "should clear all pages cached" do
+      it "should expire cache index" do
         get :all
         delete :destroy, :section_id => section.id, :id => @post.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
@@ -203,15 +218,11 @@ describe PostsController do
         Post.find(@post.id).should be_approved
       end
 
-      it "should clear all pages cached" do
+      it "should expire cache index" do
         get :all
         put :approve, :section_id => section.id, :id => @post.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
-  end
-
-  after :each do
-    clear_cache!
   end
 end
