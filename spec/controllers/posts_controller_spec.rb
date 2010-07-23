@@ -127,13 +127,6 @@ describe PostsController do
         response.code.should eql("302")
       end
     end
-
-    describe "GET new" do
-      it "should return 302 as the status code" do
-        get :new, :section_id => section.id
-        response.code.should eql("302")
-      end
-    end
   end
 
   context "with a logged user" do
@@ -145,7 +138,7 @@ describe PostsController do
     describe "POST create" do
       it "should create a post for the logged user" do
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        Post.last.author.should == controller.current_user
+        Post.first.author.should == controller.current_user
       end
 
       it "should create a post for specified section" do
