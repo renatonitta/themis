@@ -35,7 +35,7 @@ class PostsController < InheritedResources::Base
   end
 
   def paginate(posts)
-    @posts = posts.paginate :page => params[:page], :per_page => PER_PAGE
+    @posts = posts.paginate :page => params[:page], :per_page => PER_PAGE, :order => ['created_at DESC']
   end
 
   def authenticate_approver

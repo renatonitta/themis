@@ -26,6 +26,12 @@ describe PostsController do
           get :index, :section_id => section.id, :page => 2
           assigns(:posts).size.should == 1
         end
+
+        it "should return ordered by created_at" do
+          5.times { Factory :approved_post, :section => section }
+          get :index, :section_id => section.id, :format => format
+          assigns(:posts).first.created_at.should > assigns(:posts).last.created_at
+        end
       end
 
       it "should paginate and cache the page" do
