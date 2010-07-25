@@ -3,9 +3,9 @@ xml.instruct!
 xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
  xml.channel do
 
-   xml.title       Themis::Config['name']
+   xml.title       configuration['name']
    xml.link        root_url
-   xml.description Themis::Config['description'] 
+   xml.description configuration['description'] 
 
    @posts.each do |post|
      xml.item do
