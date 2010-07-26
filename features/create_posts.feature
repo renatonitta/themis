@@ -8,7 +8,7 @@ Feature: Creating posts
     And I fill in "Body" with "My test post"
     And I fill in "Tag list" with "test, general"
     And I press "Create Post"
-    Then I should see "My post" within ".post .title"
+    Then I should see "My post" within ".post h2"
 
     When I follow "general"
     Then I should be on posts with tag general
