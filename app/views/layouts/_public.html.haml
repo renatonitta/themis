@@ -4,7 +4,6 @@
   %meta{ :name => "keywords", :content => keywords }
   %meta{ :name => "description", :content => configuration['description'] }
   %link{ :rel => "alternate", :type => "application/rss+xml", :title => rss_title, :href => rss_link}
-  = render "google_analytics"
 
 - content_for :sidebar do
   = form_tag 'http://google.com/search', :method => :get do
@@ -16,3 +15,7 @@
     - @sections.each do |section|
       .section
         .name= link_to section.name, section_posts_path(section)
+
+- content_for :js do
+  = render "google_analytics"
+
