@@ -1,4 +1,5 @@
 require 'spec_helper'
+include ApplicationHelper
 
 describe PostsHelper do
   context "on #keywords" do

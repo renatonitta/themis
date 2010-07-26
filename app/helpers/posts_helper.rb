@@ -8,11 +8,11 @@ module PostsHelper
   end
 
   def rss_link
-    "http://feeds.feedburner.com/#{Themis::Config['name']}#{section_name}".delete(' ')
+    "http://feeds.feedburner.com/#{configuration['name']}#{section_name}".delete(' ')
   end
 
   def rss_title
-    "#{Themis::Config['name']}#{section_name}"
+    "#{configuration['name']}#{section_name}"
   end
 
   private
