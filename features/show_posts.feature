@@ -9,6 +9,7 @@ Feature: Show Posts
     And I should see blog description as meta tag
     And I should see blog rss
     And I should see "Next" 
+    And I should see blog description on page title
 
     When I follow "Next"
     Then I should see 2 posts

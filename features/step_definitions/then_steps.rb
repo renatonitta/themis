@@ -39,3 +39,8 @@ Then /^I should see section "([^\"]*)" rss$/ do |section|
   page.should have_xpath("//link[@type='application/rss+xml'][@title='#{Themis::Config['name']} #{section}'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}#{section.capitalize}']")
 end
 
+Then /^I should see blog description on page title$/ do
+  with_scope 'title' do
+    page.should have_content(Themis::Config['description'])
+  end
+end

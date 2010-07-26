@@ -1,4 +1,4 @@
-= render :layout => "layouts/public" do
+= render :layout => "layouts/public", :locals => {:title => @post.title} do
   .post
     %h2.title= @post.title
     .author= @post.author.name

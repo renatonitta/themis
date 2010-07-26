@@ -4,6 +4,7 @@
   %meta{ :name => "keywords", :content => keywords }
   %meta{ :name => "description", :content => configuration['description'] }
   %link{ :rel => "alternate", :type => "application/rss+xml", :title => rss_title, :href => rss_link}
+  %title= "#{configuration['name']} - #{title}"
 
 - content_for :sidebar do
   = form_tag 'http://google.com/search', :method => :get do
@@ -18,7 +19,4 @@
 
 - content_for :js do
   = render "google_analytics"
-
-- content_for :title do
-  = title
 

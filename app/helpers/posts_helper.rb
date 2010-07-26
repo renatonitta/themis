@@ -15,17 +15,7 @@ module PostsHelper
     "#{configuration['name']}#{section_name}"
   end
 
-  def title
-    "#{configuration['name']}#{complement_title}"
-  end
-
   private
-
-  def complement_title
-    complement = @section.name unless @section.nil?
-    complement = @post.title unless @post.nil?
-    " - #{complement}" unless complement.nil?
-  end
 
   def section_name
     @section.present? ? ' ' + @section.name.capitalize : ''
