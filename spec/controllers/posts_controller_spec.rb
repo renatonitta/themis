@@ -2,11 +2,6 @@ require 'spec_helper'
 
 describe PostsController do
   include Devise::TestHelpers
-  CACHE_PATH = Themis::Application.config.action_controller.page_cache_directory
-
-  before :each do
-    clear_cache!
-  end
 
   let(:section) { Factory :section }
 
@@ -39,6 +34,7 @@ describe PostsController do
       end
 
       it "should cache the page" do
+        clear_cache
         (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
         get :index, :section_id => section.id, :page => 2
         File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
@@ -60,6 +56,7 @@ describe PostsController do
       end
 
       it "should cache the page" do
+        clear_cache
         get :show, :section_id => section.id, :id => post.id
         File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{post.id}.html").should be_true
       end
@@ -80,6 +77,7 @@ describe PostsController do
       end
 
       it "should cache the page" do
+        clear_cache
         get :all
         File.exist?("#{CACHE_PATH}/index.html").should be_true
       end
@@ -159,8 +157,9 @@ describe PostsController do
       end
 
       it "should expire the section posts page cache" do
-        file_name = "#{CACHE_PATH}/sections/#{section.id}/posts/pages/1.html"
-        FileUtils.mkdir_p "#{CACHE_PATH}/sections/#{section.id}/posts/pages"
+        path = "#{CACHE_PATH}/sections/#{section.id}/posts/pages"
+        file_name = "#{path}/1.html"
+        FileUtils.mkdir_p path
         File.open file_name, 'w'
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
         File.exist?(file_name).should be_false
@@ -174,15 +173,19 @@ describe PostsController do
       end
 
       it "should expire the blog index page cache" do
-        get :all
+        file_name = "#{CACHE_PATH}/index.html"
+        File.open file_name, 'w'
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
-        File.exist?("#{CACHE_PATH}/index.html").should be_false
+        File.exist?(file_name).should be_false
       end
 
       it "should expire the post page cache" do
-        get :show, :section_id => section.id, :id => @post.id
+        path = "#{CACHE_PATH}/sections/#{section.id}/posts/pages"
+        file_name = "#{path}/1.html"
+        FileUtils.mkdir_p path
+        File.open file_name, 'w'
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
-        File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{@post.id}.html").should be_false
+        File.exist?(file_name).should be_false
       end
     end
 
@@ -193,9 +196,10 @@ describe PostsController do
       end
 
       it "should expire the blog index page cache" do
-        get :all
+        file_name = "#{CACHE_PATH}/index.html"
+        File.open file_name, 'w'
         delete :destroy, :section_id => section.id, :id => @post.id
-        File.exist?("#{CACHE_PATH}/index.html").should be_false
+        File.exist?(file_name).should be_false
       end
     end
 
@@ -220,7 +224,8 @@ describe PostsController do
       end
 
       it "should expire the blog index page cache" do
-        get :all
+        file_name = "#{CACHE_PATH}/index.html"
+        File.open file_name, 'w'
         put :approve, :section_id => section.id, :id => @post.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
