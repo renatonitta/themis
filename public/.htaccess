@@ -1,0 +1,12 @@
+# cache
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} ^(GET|HEAD)
+RewriteCond %{REQUEST_URI} ^(.*)$
+RewriteCond %{DOCUMENT_ROOT}/cache/$1.html -f
+RewriteRule ^(.*)$ /cache/$1.html
+
+# expiration
+ExpiresActive On
+ExpiresDefault "access plus 10 years"
+
