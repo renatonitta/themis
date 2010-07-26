@@ -29,3 +29,8 @@ Feature: Show Posts
     When I visit "/posts.rss"
     Then I should see 5 rss items
     And I should see blog information 
+
+  Scenario: Section
+    Given a section exists with name: "About"
+    When I go to "About" section page
+    Then I should see "About" within "title"
