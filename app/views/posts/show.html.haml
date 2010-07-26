@@ -1,3 +1,6 @@
+- content_for :title do
+  = ": #{@post.title}"
+
 = render :layout => "layouts/public" do
   .post
     .title= @post.title

@@ -34,3 +34,4 @@ end
 Then /^I should see section "([^\"]*)" rss$/ do |section|
   page.should have_xpath("//link[@type='application/rss+xml'][@title='#{Themis::Config['name']} #{section}'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}#{section.capitalize}']")
 end
+

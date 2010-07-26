@@ -21,6 +21,7 @@ Feature: Show Posts
     Then I should see "textile" within "strong"
     And I should see "ror" as keyword
     And I should see section "About" rss
+    And I should see "Textile" within "title"
 
   Scenario: RSS
     Given 5 approved posts exist
