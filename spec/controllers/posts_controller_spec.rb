@@ -25,20 +25,20 @@ describe PostsController do
           assigns(:posts).size.should == section.posts.approved.size
         end
 
-        it "should return only approved posts paginated by section" do
+        it "should paginate the posts" do
           (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
           get :index, :section_id => section.id, :page => 2
           assigns(:posts).size.should == 1
         end
 
-        it "should return ordered by created_at" do
+        it "should order post from newest to oldest" do
           5.times { Factory :approved_post, :section => section }
           get :index, :section_id => section.id, :format => format
           assigns(:posts).first.created_at.should > assigns(:posts).last.created_at
         end
       end
 
-      it "should paginate and cache the page" do
+      it "should cache the page" do
         (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
         get :index, :section_id => section.id, :page => 2
         File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
@@ -151,7 +151,7 @@ describe PostsController do
         Post.last.section.should eql(section)
       end
 
-      it "should expire the all posts page cache" do
+      it "should expire the blog index page cache" do
         file_name = "#{CACHE_PATH}/index.html"
         File.open file_name, 'w'
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
@@ -173,13 +173,13 @@ describe PostsController do
         Post.last.author.should_not == controller.current_user
       end
 
-      it "should expire cache index" do
+      it "should expire the blog index page cache" do
         get :all
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
         File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
 
-      it "should expire the relative page" do
+      it "should expire the post page cache" do
         get :show, :section_id => section.id, :id => @post.id
         put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
         File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{@post.id}.html").should be_false
@@ -192,7 +192,7 @@ describe PostsController do
         Post.find_by_id(@post.id).should be_nil
       end
 
-      it "should expire cache index" do
+      it "should expire the blog index page cache" do
         get :all
         delete :destroy, :section_id => section.id, :id => @post.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
@@ -219,7 +219,7 @@ describe PostsController do
         Post.find(@post.id).should be_approved
       end
 
-      it "should expire cache index" do
+      it "should expire the blog index page cache" do
         get :all
         put :approve, :section_id => section.id, :id => @post.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
