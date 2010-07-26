@@ -1,1 +1,1 @@
-Disqus::defaults['account'] = Themis::Config['disqus']['account']
+Disqus::defaults[:account] = Themis::Config['disqus']['account']
