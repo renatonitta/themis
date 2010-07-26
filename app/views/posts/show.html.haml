@@ -3,7 +3,7 @@
 
 = render :layout => "layouts/public" do
   .post
-    %h2= @post.title
+    %h2.title= @post.title
     .author= @post.author.name
     .date= @post.created_at
     .body= raw @post.body.to_html
