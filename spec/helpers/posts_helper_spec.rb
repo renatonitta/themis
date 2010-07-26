@@ -1,7 +1,8 @@
 require 'spec_helper'
-include ApplicationHelper
 
 describe PostsHelper do
+  include ApplicationHelper
+
   context "on #keywords" do
     context "given there is a post" do
       it "should return the post's tags" do
