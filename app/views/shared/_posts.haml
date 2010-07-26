@@ -1,4 +1,4 @@
-= render :layout => "layouts/public", :locals => {:title => (defined?(title) ? title : configuration['description'])} do
+= render :layout => "layouts/public", :locals => {:title => title} do
   - if defined?(title)
     %h2= title
 
