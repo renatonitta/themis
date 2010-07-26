@@ -18,12 +18,6 @@ module Themis
     
     config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
 
-    config.to_prepare { 
-      [Devise::SessionsController, Devise::RegistrationsController].each do |controller|
-        controller.layout "admin" 
-      end
-    } 
-
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end
