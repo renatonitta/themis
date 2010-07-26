@@ -1,6 +1,3 @@
-- content_for :title do
-  = ": #{@section.name}" unless @section.nil?
-
 = render :layout => "layouts/public" do
   - if defined?(title)
     %h2= title

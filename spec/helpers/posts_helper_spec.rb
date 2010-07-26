@@ -56,4 +56,24 @@ describe PostsHelper do
       end
     end
   end
+
+  context "on #title" do
+    before :each do
+      Themis::Config['name'] = 'Blog Themis'
+    end
+
+    it "should return post title if there is a post" do
+      @post = Factory(:post, :title => 'Post')
+      title.should == "Blog Themis - Post"
+    end
+
+    it "should return section name if there is a section" do
+      @section = Factory(:section, :name => 'About')
+      title.should == "Blog Themis - About"
+    end
+
+    it "should return only the blog name if there is no section and post" do
+      title.should == "Blog Themis"
+    end
+  end
 end
