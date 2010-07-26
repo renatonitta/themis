@@ -2,6 +2,7 @@
 
 - content_for :head do
   %meta{ :name => "keywords", :content => keywords }
+  %meta{ :name => "description", :content => configuration['description'] }
   %link{ :rel => "alternate", :type => "application/rss+xml", :title => rss_title, :href => rss_link}
   = render "google_analytics"
 

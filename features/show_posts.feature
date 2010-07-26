@@ -6,6 +6,7 @@ Feature: Show Posts
     Then I should see 5 posts
     And I should see 7 sections
     And I should see "ror" as keyword
+    And I should see blog description as meta tag
     And I should see blog rss
     And I should see "Next" 
 
