@@ -10,10 +10,12 @@ Feature: Manage users
     And I fill the new user form
     And I press "Create User"
     Then a user should exist with name: "Ricardo"
+    And I should be on the admin area
 
   Scenario: Approver
     When I click to edit the first user
     And I check "Approver?"
     And I press "Update User"
     Then the user should be an approver
+    And I should be on the admin area
 
