@@ -17,3 +17,7 @@ When /^I approve the post$/ do
   When %{I go to the post edition path}
   click 'Approve'
 end
+
+When /^I click to edit the first user$/ do
+  locate(".users tr:first a.edit").click
+end

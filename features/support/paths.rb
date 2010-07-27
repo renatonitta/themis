@@ -31,6 +31,9 @@ module NavigationHelpers
     when /the user edition path/
       edit_user_path model('user')
 
+    when /the admin area/
+      admin_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
