@@ -19,5 +19,5 @@ When /^I approve the post$/ do
 end
 
 When /^I click to edit the first user$/ do
-  locate(".users tr:first a.edit").click
+  locate("a.edit:first").click
 end
