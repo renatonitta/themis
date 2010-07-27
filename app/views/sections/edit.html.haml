@@ -1,7 +1,8 @@
-%h1 Editing section
+= render :layout => "layouts/admin" do
+  %h1 Editing section
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @section
-\|
-= link_to 'Back', sections_path
+  = link_to 'Show', @section
+  \|
+  = link_to 'Back', sections_path

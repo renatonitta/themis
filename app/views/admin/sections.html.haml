@@ -1,0 +1,17 @@
+= render :layout => "layouts/admin" do
+  %h2= Section.human_name.pluralize
+
+  .links
+    = link_to "#{t("new")} #{Section.human_name.downcase}", new_section_path
+
+  .sections
+    %table
+      %thead
+        %tr
+          %th= Section.human_attribute_name(:name)
+          %th
+      %tbody
+        - @sections.each do |section|
+          %tr
+            %td= section.name
+            %td= link_to t("edit"), edit_section_path(section), :class => :edit

@@ -1,5 +1,6 @@
-%h1 New section
+= render :layout => "layouts/admin" do
+  %h1 New section
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', sections_path
+  = link_to 'Back', sections_path

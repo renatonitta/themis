@@ -18,6 +18,6 @@ When /^I approve the post$/ do
   click 'Approve'
 end
 
-When /^I click to edit the first user$/ do
+When /^I click to edit the first item$/ do
   locate("a.edit:first").click
 end

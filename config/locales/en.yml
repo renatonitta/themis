@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  administration: Administration
   edit: Edit
   new: New
   search: Search

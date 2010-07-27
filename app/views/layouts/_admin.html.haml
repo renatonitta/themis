@@ -1,0 +1,11 @@
+= yield
+
+- content_for :head do
+  %title= t("administration")
+
+- content_for :sidebar do
+  %ul
+    %li= link_to User.human_name.pluralize, admin_path
+    %li= link_to Section.human_name.pluralize, admin_sections_path
+  
+
