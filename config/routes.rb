@@ -11,7 +11,8 @@ Themis::Application.routes.draw do |map|
       end
     end
   end
-  match 'admin', :to => 'users#index'
+  match 'admin', :to => 'admin#users'
+  match 'admin/sections', :to => 'admin#sections'
   match 'tags/:tag', :to => 'posts#by_tag', :as => 'tags'
   match 'posts.:format', :to => 'posts#all'
   match 'posts/pages/:page', :to => 'posts#all', :as => 'posts_page'
