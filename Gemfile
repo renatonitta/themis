@@ -16,6 +16,7 @@ gem "disqus", ">= 1.0.4"
 gem "RedCloth", ">= 4.2.3"
 gem "acts-as-taggable-on", ">= 2.0.6"
 gem "aasm", :git => "git://github.com/rubyist/aasm.git"
+gem "sitemap_generator", :git => "git://github.com/bernardelli/sitemap_generator" 
 
 gem "rspec", ">=2.0.0.alpha.11", :group => :test
 gem "rspec-rails", ">=2.0.0.alpha.11", :group => :test
