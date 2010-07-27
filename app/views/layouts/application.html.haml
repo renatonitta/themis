@@ -10,8 +10,7 @@
     = yield :head
   %body
     #container
-      #header
-        %h1= link_to configuration['name'], root_path
+      #header= yield :header
       #content= yield
       #sidebar= yield :sidebar
       #footer FOOTER
