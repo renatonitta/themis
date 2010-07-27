@@ -6,7 +6,7 @@ Feature: Manage users
     And I am on the admin area
 
   Scenario: Creation
-    When I follow "new user"
+    When I follow "New user"
     And I fill the new user form
     And I press "Create User"
     Then a user should exist with name: "Ricardo"

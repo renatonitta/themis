@@ -1,4 +1,4 @@
-= link_to "new user", new_user_path
+= link_to "#{t("new")} #{User.human_name.downcase}", new_user_path
 
 .users
   %table
