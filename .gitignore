@@ -22,3 +22,4 @@ cache
 gems
 capybara-*.html
 *.orig
+public/sitemap*
