@@ -75,5 +75,19 @@ def should_require_admin_authentication_on_private_actions
         response.code.should eql("302")
       end
     end
+
+    describe "GET new" do
+      it "should return 302 as the status code" do
+        get :new
+        response.code.should eql("302")
+      end
+    end
+
+    describe "GET edit" do
+      it "should return 302 as the status code" do
+        get :edit, :id => 10
+        response.code.should eql("302")
+      end
+    end
   end
 end
