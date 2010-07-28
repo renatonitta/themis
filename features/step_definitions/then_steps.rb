@@ -40,7 +40,5 @@ Then /^I should see section "([^\"]*)" rss$/ do |section|
 end
 
 Then /^I should see blog description on page title$/ do
-  with_scope 'title' do
-    page.should have_content(Themis::Config['description'])
-  end
+  Then %{I should see "#{Themis::Config['description']}" within "title"}
 end
