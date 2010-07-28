@@ -19,7 +19,7 @@ Feature: Manage sections
     Then a section should exist with name: "Section Updated"
     And I should be on the admin sections page
 
-  @culerity
+  @pending
   Scenario: Destroy
     When I click to destroy the first item 
     Then I should not see "Ruby" 
