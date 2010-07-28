@@ -8,7 +8,7 @@ describe AdminController do
       sign_in Factory(:admin)
     end
 
-    describe "responding to GET users" do
+    describe "GET users" do
       it "should list users" do
         2.times { Factory(:user) }
         get :users
@@ -16,7 +16,7 @@ describe AdminController do
       end
     end
 
-    describe "responding to GET sections" do
+    describe "GET sections" do
       it "should list users" do
         2.times { Factory(:section) }
         get :sections
@@ -30,14 +30,14 @@ describe AdminController do
       sign_in Factory(:user)
     end
 
-    describe "responding to GET users" do
+    describe "GET users" do
       it "should return 302 as the status code" do
         get :users
         response.code.should eql("302")
       end
     end
 
-    describe "responding to GET sections" do
+    describe "GET sections" do
       it "should return 302 as the status code" do
         get :sections
         response.code.should eql("302")
