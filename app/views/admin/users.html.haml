@@ -1,8 +1,8 @@
 = render :layout => "layouts/admin" do
-  %h2= User.human_name.pluralize
+  %h2= User.model_name.human.pluralize
 
   .links
-    = link_to "#{t("new")} #{User.human_name.downcase}", new_user_path
+    = link_to "#{t("new")} #{User.model_name.human.downcase}", new_user_path
 
   .users
     %table

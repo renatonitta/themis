@@ -1,8 +1,8 @@
 = render :layout => "layouts/admin" do
-  %h2= Section.human_name.pluralize
+  %h2= Section.model_name.human.pluralize
 
   .links
-    = link_to "#{t("new")} #{Section.human_name.downcase}", new_section_path
+    = link_to "#{t("new")} #{Section.model_name.human.downcase}", new_section_path
 
   .sections
     %table
@@ -13,7 +13,7 @@
           %th
       %tbody
         - @sections.each do |section|
-          %tr
+          %tr{:id => dom_id(section)}
             %td= section.name
             %td= link_to t("edit"), edit_section_path(section), :class => :edit
-            %td= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+            %td= link_to t("destroy"), section, :remote => true, :confirm => 'Are you sure?', :method => :delete, :class => :destroy

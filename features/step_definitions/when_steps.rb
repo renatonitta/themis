@@ -21,3 +21,8 @@ end
 When /^I click to edit the first item$/ do
   locate("a.edit:first").click
 end
+
+When /^I click to destroy the first item$/ do
+  pending
+  locate("a.destroy:first").click
+end

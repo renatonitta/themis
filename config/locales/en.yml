@@ -4,6 +4,7 @@
 en:
   administration: Administration
   edit: Edit
+  destroy: Destroy
   new: New
   search: Search
   activerecord:

@@ -2,9 +2,8 @@ Feature: Manage sections
 
   Background: Admin area
     Given I am a logged admin
-    And a section exists
-    And I am on the admin page
-    When I follow "Sections" within "#sidebar"
+    And a section exists with name: "Ruby"
+    And I am on the admin sections page
 
   Scenario: Creation
     When I follow "New section"
@@ -20,3 +19,7 @@ Feature: Manage sections
     Then a section should exist with name: "Section Updated"
     And I should be on the admin sections page
 
+  @culerity
+  Scenario: Destroy
+    When I click to destroy the first item 
+    Then I should not see "Ruby" 
