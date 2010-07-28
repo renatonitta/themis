@@ -49,9 +49,9 @@ def should_require_admin_authentication_on_private_actions
     end
 
     describe "GET index" do
-      it "should return 302 as the status code" do
+      it "should return 200 as the status code" do
         get :index
-        response.code.should eql("302")
+        response.code.should eql("200")
       end
     end
 

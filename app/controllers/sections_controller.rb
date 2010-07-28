@@ -1,5 +1,5 @@
 class SectionsController < InheritedResources::Base
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :only => [:create, :update, :destroy, :edit, :new]
   
   def create
     create! do |success, failure|
