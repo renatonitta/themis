@@ -12,14 +12,13 @@ Feature: Manage sections
     Then a section should exist with name: "Section"
     And I should be on the admin sections page
 
-  Scenario: Approver
+  Scenario: Update
     When I click to edit the first item
     And I fill in "Name" with "Section Updated"
     And I press "Save"
     Then a section should exist with name: "Section Updated"
     And I should be on the admin sections page
 
-  @pending
   Scenario: Destroy
     When I click to destroy the first item 
     Then I should not see "Ruby" 

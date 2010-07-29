@@ -32,9 +32,6 @@ gem "capybara", ">=0.3.6", :group => :cucumber
 gem "database_cleaner", ">=0.5.0", :group => :cucumber
 gem "spork", ">=0.8.4", :group => :cucumber
 gem "pickle", :git => "git://github.com/codegram/pickle.git", :group => :cucumber
-gem "nokogiri", ">=1.4.2", :group => :cucumber
-gem "launchy", ">=0.3.7", :group => :cucumber
-gem "culerity", "=0.2.6"
 
 gem "inploy"
 
