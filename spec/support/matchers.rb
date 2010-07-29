@@ -40,6 +40,36 @@ def should_require_authentication_on_private_actions
   end
 end
 
+def should_require_admin_authentication
+  include Devise::TestHelpers
+
+  context "with a logged user" do
+    before :each do
+      sign_in Factory(:user)
+    end
+
+    describe "GET index" do
+      it "should return 302 as the status code"  do
+        get :index
+        response.code.should eql("302")
+      end
+    end
+  end
+
+  context "with a logged admin" do
+    before :each do
+      sign_in Factory(:admin)
+    end
+
+    describe "GET index" do
+      it "should return 200 as the status code"  do
+        get :index
+        response.code.should eql("200")
+      end
+    end
+  end
+end
+
 def should_require_admin_authentication_on_private_actions
   include Devise::TestHelpers
 
@@ -88,6 +118,20 @@ def should_require_admin_authentication_on_private_actions
         get :edit, :id => 10
         response.code.should eql("302")
       end
+    end
+  end
+end
+
+def should_have_only_public_actions
+  %w(index show).each do |action|
+    it "should respond to GET #{action}" do
+      subject.should respond_to(action)
+    end
+  end
+
+  %w(edit update destroy).each do |action|
+    it "should not respond to #{action}" do
+      subject.should_not respond_to(action)
     end
   end
 end

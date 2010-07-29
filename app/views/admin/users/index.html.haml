@@ -2,7 +2,7 @@
   %h2= User.model_name.human.pluralize
 
   .links
-    = link_to "#{t("new")} #{User.model_name.human.downcase}", new_user_path
+    = link_to "#{t("new")} #{User.model_name.human.downcase}", new_admin_user_path
 
   .users
     %table
@@ -16,4 +16,4 @@
           %tr
             %td= user.name
             %td= user.email
-            %td= link_to t("edit"), edit_user_path(user), :class => :edit
+            %td= link_to t("edit"), edit_admin_user_path(user), :class => :edit

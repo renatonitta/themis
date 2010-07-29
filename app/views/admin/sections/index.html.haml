@@ -2,7 +2,7 @@
   %h2= Section.model_name.human.pluralize
 
   .links
-    = link_to "#{t("new")} #{Section.model_name.human.downcase}", new_section_path
+    = link_to "#{t("new")} #{Section.model_name.human.downcase}", new_admin_section_path
 
   .sections
     %table
@@ -15,5 +15,5 @@
         - @sections.each do |section|
           %tr{:id => dom_id(section)}
             %td= section.name
-            %td= link_to t("edit"), edit_section_path(section), :class => :edit
-            %td= link_to t("destroy"), section, :remote => true, :confirm => 'Are you sure?', :method => :delete, :class => :destroy
+            %td= link_to t("edit"), edit_admin_section_path(section), :class => :edit
+            %td= link_to t("destroy"), admin_section_path(section), :confirm => 'Are you sure?', :method => :delete, :class => :destroy
