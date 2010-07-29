@@ -25,6 +25,12 @@ Feature: Show Posts
     And I should see section "About" rss
     And I should see "Textile" within "title"
 
+  Scenario: Syntax Highlight 
+    Given a section exists with name: "Programming"
+    And a post exists with title: "Highlight", body: "<pre><code>def helloworld; end</code></pre>", section: the section
+    When I go to Highlight's post page
+    Then I should see "helloworld" within "code" 
+
   Scenario: RSS
     Given 5 approved posts exist
     When I visit "/posts.rss"
