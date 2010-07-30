@@ -17,6 +17,7 @@
 @import "compass/css3/box-shadow";
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
+
 body {
   @include blueprint-typography(true);
   @include blueprint-utilities;
@@ -90,3 +91,5 @@ body {
     }
   }
 }
+
+@import "syntax_highlight";
