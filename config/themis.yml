@@ -1,5 +1,6 @@
 name: "Themis"
 description: "Themis blog"
+ldap: false
 
 host: "http://themis.com"
 

@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/BrunoGrasselli/devise_ldap_authenticatable.git
+  revision: f0c599a
+  branch: rails3
+  specs:
+    devise_ldap_authenticatable (0.4.0)
+      devise (~> 1.1.rc2)
+      net-ldap (~> 0.1.1)
+
+GIT
   remote: git://github.com/bernardelli/sitemap_generator
   revision: c013d38
   specs:
@@ -35,8 +44,8 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.3)
     RedCloth (4.2.3-java)
+    RedCloth (4.2.3)
     Saikuro (1.1.0)
     abstract (1.0.0)
     actionmailer (3.0.0.rc)
@@ -161,6 +170,7 @@ GEM
       roodi (>= 2.1.0)
     mime-types (1.16)
     mysql (2.8.1)
+    net-ldap (0.1.1)
     newrelic_rpm (2.12.3)
     nokogiri (1.4.2-java)
       weakling (>= 0.0.3)
@@ -263,6 +273,7 @@ DEPENDENCIES
   cucumber-rails (>= 0.3.2)
   database_cleaner (>= 0.5.0)
   devise (>= 1.1.rc2)
+  devise_ldap_authenticatable!
   disqus (>= 1.0.4)
   factory_girl_rails
   formtastic!
