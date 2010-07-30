@@ -1,2 +1,2 @@
-bundle install --without=production
+bundle install ~/.bundle --without=production
 rake build RAILS_ENV=test
