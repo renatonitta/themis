@@ -1,0 +1,12 @@
+--- 
+javascripts: 
+- base: 
+  - rails
+  - highlight.pack
+stylesheets: 
+- ie: 
+  - ie
+- screen:
+  - screen
+- print:
+  - print
