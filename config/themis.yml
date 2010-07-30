@@ -1,6 +1,8 @@
 name: "Themis"
 description: "Themis blog"
 
+host: "http://themis.com"
+
 google_analytics:
   tracker_id: 'UA-12345-67'
 
