@@ -140,7 +140,3 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
 end
-
-User.class_eval do
-  Themis::Config['ldap'] ? devise(:ldap_authenticatable) : devise(:database_authenticatable)
-end
