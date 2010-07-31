@@ -149,20 +149,20 @@ describe PostsController do
         Post.last.section.should eql(section)
       end
 
-      it "should expire the blog index page cache" do
+      it "should not expire the blog index page cache" do
         file_name = "#{CACHE_PATH}/index.html"
         File.open file_name, 'w'
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        File.exist?(file_name).should be_false
+        File.exist?(file_name).should be_true
       end
 
-      it "should expire the section posts page cache" do
+      it "should not expire the section posts page cache" do
         path = "#{CACHE_PATH}/sections/#{section.id}/posts/pages"
         file_name = "#{path}/1.html"
         FileUtils.mkdir_p path
         File.open file_name, 'w'
         post :create, :section_id => section.id, :post =>  { :title => "Title", :body => "Body" }
-        File.exist?(file_name).should be_false
+        File.exist?(file_name).should be_true
       end
     end
 

@@ -1,7 +1,7 @@
 class PostSweeper < ActionController::Caching::Sweeper
   observe Post
 
-  def after_save(post)
+  def after_update(post)
     expire_cache post
   end
 
