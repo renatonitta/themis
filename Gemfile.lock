@@ -247,8 +247,6 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    whenever (0.5.0)
-      chronic (>= 0.2.3)
     will_paginate (3.0.pre2)
 
 PLATFORMS
@@ -286,5 +284,4 @@ DEPENDENCIES
   sitemap_generator!
   spork (>= 0.8.4)
   sqlite3-ruby
-  whenever
   will_paginate (>= 3.0.pre)
