@@ -28,6 +28,9 @@ module NavigationHelpers
     when /the user edition path/
       edit_user_path model('user')
 
+    when /the sitemap path with format xml/
+      sitemap_path(:format => :xml)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

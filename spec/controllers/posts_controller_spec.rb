@@ -179,6 +179,13 @@ describe PostsController do
         File.exist?(file_name).should be_false
       end
 
+      it "should expire the sitemap.xml" do
+        file_name = "#{CACHE_PATH}/sitemap.xml"
+        File.open file_name, 'w'
+        put :update, :section_id => section.id, :id => @post.id, :post => { :title => "Title", :body => "Body" }
+        File.exist?(file_name).should be_false
+      end
+
       it "should expire the post page cache" do
         path = "#{CACHE_PATH}/sections/#{section.id}/posts/pages"
         file_name = "#{path}/1.html"
