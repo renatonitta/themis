@@ -1,11 +1,11 @@
 GIT
   remote: git://github.com/BrunoGrasselli/devise_ldap_authenticatable.git
-  revision: f0c599a
+  revision: 2df47fb
   branch: rails3
   specs:
-    devise_ldap_authenticatable (0.4.0)
-      devise (~> 1.1.rc2)
-      net-ldap (~> 0.1.1)
+    devise_ldap_authenticatable (0.4.1)
+      devise (> 1.0.4)
+      net-ldap (>= 0.0.0)
 
 GIT
   remote: git://github.com/bernardelli/sitemap_generator
@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: git://github.com/justinfrench/formtastic.git
-  revision: 4481341
+  revision: 4d83225
   branch: rails3
   specs:
-    formtastic (1.0.0.beta2)
+    formtastic (1.0.0.rc)
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
       i18n (>= 0.4.0)
@@ -45,7 +45,6 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.3)
-    RedCloth (4.2.3-java)
     Saikuro (1.1.0)
     abstract (1.0.0)
     actionmailer (3.0.0.rc)
@@ -78,6 +77,7 @@ GEM
     arel (0.4.0)
       activesupport (>= 3.0.0.beta)
     arrayfields (4.7.4)
+    babosa (0.1.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     capybara (0.3.9)
@@ -96,7 +96,7 @@ GEM
       main
       ruby_parser (~> 2.0.4)
       sexp_processor (~> 3.0.3)
-    compass (0.10.2)
+    compass (0.10.3)
       haml (>= 3.0.4)
     cucumber (0.8.5)
       builder (~> 2.1.2)
@@ -108,7 +108,7 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.10)
     database_cleaner (0.5.2)
-    devise (1.1.0)
+    devise (1.1.1)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
     diff-lcs (1.1.2)
@@ -121,7 +121,6 @@ GEM
       factory_girl (~> 1.3)
       rails (>= 3.0.0.beta4)
     fattr (2.1.0)
-    ffi (0.6.3-java)
     ffi (0.6.3)
       rake (>= 0.8.7)
     flay (1.4.0)
@@ -130,14 +129,11 @@ GEM
     flog (2.4.0)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
-    friendly_id (3.0.6)
-      activerecord (>= 2.2)
-      activesupport (>= 2.2)
-    gherkin (2.1.5-java)
-      trollop (~> 1.16.2)
+    friendly_id (3.1.1.1)
+      babosa (>= 0.1.0)
     gherkin (2.1.5)
       trollop (~> 1.16.2)
-    haml (3.0.14)
+    haml (3.0.15)
     has_scope (0.5.0)
     hirb (0.3.2)
     hoe (2.6.1)
@@ -172,9 +168,7 @@ GEM
     mysql (2.8.1)
     net-ldap (0.1.1)
     newrelic_rpm (2.12.3)
-    nokogiri (1.4.2-java)
-      weakling (>= 0.0.3)
-    nokogiri (1.4.2)
+    nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.9)
@@ -198,7 +192,6 @@ GEM
       rake (>= 0.8.3)
       thor (~> 0.14.0)
     rake (0.8.7)
-    rcov (0.9.8-java)
     rcov (0.9.8)
     reek (1.2.8)
       ruby2ruby (~> 1.2)
@@ -250,17 +243,15 @@ GEM
     tzinfo (0.3.22)
     warden (0.10.7)
       rack (>= 1.0.0)
-    weakling (0.0.4-java)
     webrat (0.7.2.beta.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     whenever (0.5.0)
       chronic (>= 0.2.3)
-    will_paginate (3.0.pre)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
-  java
   ruby
 
 DEPENDENCIES
