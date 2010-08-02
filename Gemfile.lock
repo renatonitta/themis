@@ -8,12 +8,6 @@ GIT
       net-ldap (>= 0.0.0)
 
 GIT
-  remote: git://github.com/bernardelli/sitemap_generator
-  revision: c013d38
-  specs:
-    sitemap_generator (1.0.1)
-
-GIT
   remote: git://github.com/codegram/pickle.git
   revision: 2834204
   specs:
@@ -281,7 +275,6 @@ DEPENDENCIES
   remarkable_activerecord (>= 4.0.0.alpha4)
   rspec (>= 2.0.0.alpha.11)
   rspec-rails (>= 2.0.0.alpha.11)
-  sitemap_generator!
   spork (>= 0.8.4)
   sqlite3-ruby
   will_paginate (>= 3.0.pre)
