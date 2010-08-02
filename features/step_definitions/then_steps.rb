@@ -46,4 +46,5 @@ end
 Then /^I should see the xml file with sitemap tags$/ do
   post = Post.approved.first
   Then %{I should see "#{section_post_url(post.section, post)}" within "loc"}
+  Then %{I should see "#{post.updated_at}" within "lastmod"}
 end
