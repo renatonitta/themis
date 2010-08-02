@@ -15,6 +15,7 @@ Themis::Application.routes.draw do |map|
     resources :users
     resources :sections
   end
+  match 'sitemap.:format', :to => 'application#sitemap', :as => 'sitemap'
   match 'tags/:tag', :to => 'posts#by_tag', :as => 'tags'
   match 'posts.:format', :to => 'posts#all'
   match 'posts/pages/:page', :to => 'posts#all', :as => 'posts_page'
