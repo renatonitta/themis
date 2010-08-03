@@ -3,6 +3,9 @@ javascripts:
 - base: 
   - rails
   - highlight.pack
+- panel:
+  - jquery.markitup.pack
+  - markitup.set
 stylesheets: 
 - ie: 
   - ie
@@ -10,3 +13,6 @@ stylesheets:
   - screen
 - print:
   - print
+- panel:
+  - textile_style
+  - markitup_style
