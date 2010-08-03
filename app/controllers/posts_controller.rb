@@ -1,21 +1,12 @@
 class PostsController < InheritedResources::Base
-  respond_to :rss
   belongs_to :section
+  actions :index, :show
+  respond_to :rss
   before_filter :assign_sections
-  before_filter :authenticate_user!, :only => [:approve, :create, :update, :destroy, :new]
-  before_filter :authenticate_approver, :only => [:approve]
-  before_filter :assign_user, :only => [:create]
-
   caches_page :all, :index, :show
-  cache_sweeper :post_sweeper
 
   def all
     paginate resource_class.approved
-  end
-
-  def approve
-    resource.approve!
-    render 'show'
   end
 
   def by_tag
@@ -25,10 +16,6 @@ class PostsController < InheritedResources::Base
 
   private
 
-  def resource
-    @post = resource_class.find params[:id]
-  end
-
   def collection
     paginate end_of_association_chain.approved
   end
@@ -37,15 +24,7 @@ class PostsController < InheritedResources::Base
     @posts = posts.paginate :page => params[:page], :per_page => Post::PER_PAGE
   end
 
-  def authenticate_approver
-    render :status => 302 unless current_user.approver?
-  end
-
   def assign_sections
     @sections = Section.all
-  end
-
-  def assign_user
-    params[:post][:author] = current_user
   end
 end

@@ -1,6 +1,0 @@
-%h1 Editing post
-
-= render 'form'
-
-- if current_user.approver?
-  = button_to "Approve", approve_section_post_path(@section, @post), :method => :put

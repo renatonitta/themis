@@ -40,6 +40,32 @@ def should_require_authentication_on_private_actions
   end
 end
 
+def should_require_authentication
+  include Devise::TestHelpers
+
+  context "without a logged user" do
+    describe "GET index" do
+      it "should return 302 as the status code"  do
+        get :index
+        response.code.should eql("302")
+      end
+    end
+  end
+
+  context "with a logged user" do
+    before :each do
+      sign_in Factory(:user)
+    end
+
+    describe "GET index" do
+      it "should return 200 as the status code"  do
+        get :index
+        response.code.should eql("200")
+      end
+    end
+  end
+end
+
 def should_require_admin_authentication
   include Devise::TestHelpers
 

@@ -23,7 +23,7 @@ module NavigationHelpers
 
     when /the post edition path/
       post = model('post')
-      edit_section_post_path(post.section, post)
+      edit_panel_post_path(post)
 
     when /the user edition path/
       edit_user_path model('user')

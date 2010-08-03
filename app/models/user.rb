@@ -6,4 +6,3 @@ class User < ActiveRecord::Base
 
   Themis::Config['ldap'] ? devise(:ldap_authenticatable) : devise(:database_authenticatable)
 end
-
