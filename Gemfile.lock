@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/BrunoGrasselli/devise_ldap_authenticatable.git
-  revision: 2df47fb
-  branch: rails3
-  specs:
-    devise_ldap_authenticatable (0.4.1)
-      devise (> 1.0.4)
-      net-ldap (>= 0.0.0)
-
-GIT
   remote: git://github.com/codegram/pickle.git
   revision: 2834204
   specs:
@@ -105,6 +96,9 @@ GEM
     devise (1.1.1)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
+    devise_ldap_authenticatable (0.4.1.1)
+      devise (> 1.0.4)
+      net-ldap (>= 0.0.0)
     diff-lcs (1.1.2)
     disqus (1.0.4)
       json
@@ -256,7 +250,7 @@ DEPENDENCIES
   cucumber-rails (>= 0.3.2)
   database_cleaner (>= 0.5.0)
   devise (>= 1.1.rc2)
-  devise_ldap_authenticatable!
+  devise_ldap_authenticatable (>= 0.4.1.1)
   disqus (>= 1.0.4)
   factory_girl_rails
   formtastic!
