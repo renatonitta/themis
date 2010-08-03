@@ -25,3 +25,10 @@ end
 When /^I click to destroy the first item$/ do
   locate("a.destroy:first").click
 end
+
+When /^I fill the post form$/ do
+  When %{I fill in "Title" with "My post"}
+  When %{I fill in "Body" with "My test post"}
+  When %{I fill in "Tag list" with "test, general"}
+  When %{I select "Labs" from "Section"}
+end
