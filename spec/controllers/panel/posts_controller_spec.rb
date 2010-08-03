@@ -105,5 +105,12 @@ describe Panel::PostsController do
         File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end
+
+    describe "POST preview" do
+      it "should return an html" do
+        post :preview, :data => "h1. Title"
+        assigns(:preview).should == "<h1>Title</h1>"
+      end
+    end
   end
 end

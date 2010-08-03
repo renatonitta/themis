@@ -9,6 +9,11 @@ class Panel::PostsController < InheritedResources::Base
     render 'show'
   end
 
+  def preview
+    @preview = params[:data].to_html
+    render :layout => false
+  end
+
   private
 
   def authenticate_approver!

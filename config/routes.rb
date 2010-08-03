@@ -18,6 +18,9 @@ Themis::Application.routes.draw do |map|
       member do
         match 'approve' => 'posts#approve', :as => 'approve'
       end
+      collection do
+        post 'preview'
+      end
     end
   end
   match 'sitemap.:format', :to => 'application#sitemap', :as => 'sitemap'
