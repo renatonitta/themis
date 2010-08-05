@@ -109,7 +109,7 @@ describe Panel::PostsController do
     describe "POST preview" do
       it "should return an html" do
         post :preview, :data => "h1. Title"
-        assigns(:preview).should == "<h1>Title</h1>"
+        response.body.should == "<h1>Title</h1>"
       end
     end
   end

@@ -10,8 +10,7 @@ class Panel::PostsController < InheritedResources::Base
   end
 
   def preview
-    @preview = params[:data].to_html
-    render :layout => false
+    render :text => params[:data].to_html
   end
 
   private
