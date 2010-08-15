@@ -35,6 +35,6 @@ gem "database_cleaner", ">=0.5.0", :group => :cucumber
 gem "spork", ">=0.8.4", :group => :cucumber
 gem "pickle", :git => "git://github.com/codegram/pickle.git", :group => :cucumber
 
-gem "inploy"
+gem "inploy", ">=1.6.6"
 
 gem "rails3-generators", :git => "git://github.com/indirect/rails3-generators.git"
