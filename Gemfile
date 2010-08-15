@@ -4,7 +4,8 @@ gem "rails", "=3.0.0.rc"
 
 gem "sqlite3-ruby", :require => "sqlite3", :group => [:development, :test]
 gem "mysql", ">=2.8.1", :group => :production
-gem "newrelic_rpm", :group => :production
+gem 'newrelic_rpm', '>=2.13.0.beta5', :group => :production
+gem "hoptoad_notifier"
 
 gem "haml", ">=3.0.14"
 gem "inherited_resources", ">=1.1.2"
