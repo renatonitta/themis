@@ -1,4 +1,4 @@
-Themis::Application.routes.draw do |map|
+Themis::Application.routes.draw do
   devise_for :admins, :users
   resources :users
   resources :sections do
