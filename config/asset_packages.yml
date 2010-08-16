@@ -11,6 +11,7 @@ stylesheets:
   - ie
 - screen:
   - screen
+  - custom
 - print:
   - print
 - panel:
