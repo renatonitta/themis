@@ -2,6 +2,8 @@ name: "Themis"
 description: "Themis blog"
 ldap: false
 
+hoptoad: "YOUR KEY HERE"
+
 host: "http://themis.com"
 
 google_analytics:

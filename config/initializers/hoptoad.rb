@@ -1,3 +1,3 @@
 HoptoadNotifier.configure do |config|
-  config.api_key = 'YOUR KEY'
+  config.api_key = Themis::Config['hoptoad']
 end
