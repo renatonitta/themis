@@ -8,6 +8,7 @@ Themis::Application.routes.draw do
       end
     end
   end
+  match 'admin' => 'admin/users#index', :as => 'admin'
   namespace 'admin' do
     resources :users
     resources :sections
