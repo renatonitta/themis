@@ -1,4 +1,5 @@
-task :build => ['db:migrate', :spec] do 
+task :clean do
   system "rm rerun.txt"
-  raise unless system "rake cucumber RAILS_ENV=test"
 end
+
+task :build => ['db:migrate', :spec, :clean, :cucumber, 'metrics:all']
