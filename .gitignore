@@ -24,3 +24,4 @@ capybara-*.html
 *.orig
 public/sitemap*
 .rvmrc
+*~
