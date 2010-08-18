@@ -1,1 +1,2 @@
-Disqus::defaults[:account] = Themis::Config['disqus']['account']
+Disqus::defaults.merge! :account => Themis::Config['disqus']['account'], 
+                        :developer => Rails.env != 'development' 
