@@ -133,7 +133,7 @@ GEM
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    inploy (1.6.6)
+    inploy (1.6.8)
     json (1.4.3)
     json_pure (1.4.3)
     mail (2.2.5)
@@ -260,7 +260,7 @@ DEPENDENCIES
   haml (>= 3.0.14)
   hoptoad_notifier
   inherited_resources (>= 1.1.2)
-  inploy (>= 1.6.6)
+  inploy (>= 1.6.8)
   metric_fu
   mysql (>= 2.8.1)
   newrelic_rpm (>= 2.13.0.beta5)
