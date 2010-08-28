@@ -135,7 +135,7 @@ GEM
       responders (~> 0.6.0)
     inploy (1.6.8)
     json (1.4.3)
-    json_pure (1.4.3)
+    json_pure (1.4.6)
     mail (2.2.5)
       activesupport (>= 2.3.6)
       mime-types
@@ -261,6 +261,7 @@ DEPENDENCIES
   hoptoad_notifier
   inherited_resources (>= 1.1.2)
   inploy (>= 1.6.8)
+  json_pure (= 1.4.6)
   metric_fu
   mysql (>= 2.8.1)
   newrelic_rpm (>= 2.13.0.beta5)
