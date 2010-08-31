@@ -13,7 +13,7 @@ Themis::Application.routes.draw do
     resources :users
     resources :sections
   end
-  match 'panel' => 'panel/posts#index', :as => 'panel'
+  match 'panel' => 'panel/posts#new', :as => 'panel'
   namespace 'panel' do
     resources :posts do
       member do
