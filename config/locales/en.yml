@@ -2,19 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  'no': "No"
-  'yes': "Yes"
-  actions: Actions
   administration: Administration
-  approved: Approved
-  are_you_sure: Are you sure?
   edit: Edit
   destroy: Destroy
   new: New
-  new_post: New post
   search: Search
-  section: Section
-  title: Title
   activerecord:
     attributes:
       user:

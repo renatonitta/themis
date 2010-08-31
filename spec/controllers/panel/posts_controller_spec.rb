@@ -80,22 +80,9 @@ describe Panel::PostsController do
     end
 
     describe "PUT approve" do
-      it "should return 302 as the status code" do
+      it "return 302 as the status code" do
         put :approve, :id => 5
         response.code.should eql('302')
-      end
-    end
-
-    describe "GET index" do
-      it "should return 200 as the status code" do
-        get :index
-        response.code.should eql('200')
-      end
-
-      it "should return a list of posts" do
-        post_from_another_user = Factory(:post)
-        get :index
-        assigns(:posts) == controller.current_user.posts
       end
     end
   end

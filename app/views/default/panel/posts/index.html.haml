@@ -1,3 +1,1 @@
-= link_to t("new_post"), new_panel_post_path
-
-= render :partial => 'posts'
+= render "shared/posts", :posts => @posts, :title => @section.name
