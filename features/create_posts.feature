@@ -4,6 +4,7 @@ Feature: Creating posts
     Given I am logged in
     And a section exists with name: "Labs"
     When I visit the panel
+    And I follow "New post"
     And I fill the post form
     And I press "Create Post"
     Then I should see "My post" within ".post .title"

@@ -1,0 +1,9 @@
+%table
+  %thead
+    %tr
+      %th= t('title')
+      %th= t('section')
+      %th= t('approved')
+      %th= t('actions')
+  %tbody
+    = render :partial => 'post', :collection => collection

@@ -1,0 +1,7 @@
+%tr
+  %td= post.title
+  %td= post.section.name
+  %td= post.approved? ? t("yes") : t("no")
+  %td 
+    =link_to t("edit"), edit_panel_post_path(post)
+    =link_to t("destroy"), panel_post_path(post), :method => :delete, :confirm => t("are_you_sure")
