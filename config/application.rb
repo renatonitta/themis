@@ -13,12 +13,11 @@ module Themis
       g.test_framework  :rspec, :fixture => true, :views => false
       g.fixture_replacement :factory_girl, :dir => "spec/support/factories"
     end
-
     config.encoding = "utf-8"
-    
     config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
-
-    # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    %w(default custom).each do |folder|
+      config.i18n.load_path += Dir[Rails.root.join('config', 'locales', folder, '*.{rb,yml}').to_s]
+    end
   end
 end
