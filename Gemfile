@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "=3.0.0.rc"
+gem "rails", "=3.0.0"
 
 gem "json_pure", "=1.4.6"
 
@@ -9,7 +9,7 @@ gem "mysql", ">=2.8.1", :group => :production
 gem 'newrelic_rpm', '>=2.13.0.beta5', :group => :production
 gem "hoptoad_notifier"
 
-gem "haml", ">=3.0.14"
+gem "haml", ">=3.0.18"
 gem "inherited_resources", ">=1.1.2"
 gem "will_paginate", ">=3.0.pre"
 gem "devise", ">=1.1.rc2"
