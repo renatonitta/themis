@@ -80,7 +80,7 @@ describe Panel::PostsController do
     end
 
     describe "PUT approve" do
-      it "return 302 as the status code" do
+      it "should return 302 as the status code" do
         put :approve, :id => 5
         response.code.should eql('302')
       end

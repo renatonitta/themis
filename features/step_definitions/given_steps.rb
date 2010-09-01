@@ -25,3 +25,7 @@ Given /^I am logged in$/ do
   fill_in 'Password', :with => 'password'
   click_button 'Sign in'
 end
+
+Given /^I have a post with title "(.*)"$/ do |title|
+  Factory(:post, :title => title, :author => User.last)
+end
