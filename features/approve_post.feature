@@ -1,6 +1,6 @@
 Feature: Approve post
 
-  Scenario: Defaul
+  Scenario: Default
     Given I am a logged approver
     And a post exists
     When I approve the post
