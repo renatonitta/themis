@@ -2,6 +2,10 @@ Given /^the Google Analytics code is "(.*)"$/ do |tracker_id|
   Themis::Config['google_analytics']['tracker_id'] = tracker_id   
 end
 
+Given /^the Get Clicky code is "(.*)"$/ do |tracker_id|
+  Themis::Config['get_clicky']['tracker_id'] = tracker_id   
+end
+
 Given /^I am a logged admin$/ do
   user = Factory :admin, :password => 'password'
   visit new_admin_session_path

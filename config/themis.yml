@@ -9,5 +9,8 @@ host: "http://themis.com"
 google_analytics:
   tracker_id: 'UA-12345-67'
 
+get_clicky:
+  tracker_id: '00112233'
+
 disqus:
   account: 'themis'
