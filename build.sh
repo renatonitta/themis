@@ -1,2 +1,2 @@
-bundle install ~/.bundle --without=production
+bundle install --without=production
 rake build
