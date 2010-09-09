@@ -1,5 +1,4 @@
-!!! XML
-!!!
+!!! 5
 %html
   %head
     =raw stylesheet_link_merged 'screen', :media => 'screen, projection'
@@ -10,10 +9,10 @@
     = yield :head
   %body
     #container
-      #header= yield :header
-      #content= yield
-      #sidebar= yield :sidebar
-      #footer FOOTER
+      %header= yield :header
+      %section= yield
+      %aside= yield :sidebar
+      %footer FOOTER
       %script{ :type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
       %script{ :type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" }
       =raw javascript_include_merged :base

@@ -18,6 +18,9 @@
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 
+$sidebar-columns: floor($blueprint-grid-columns / 4);
+$content-columns: $blueprint-grid-columns - $sidebar-columns;
+
 body {
   @include blueprint-typography(true);
   @include blueprint-utilities;
@@ -29,14 +32,11 @@ body {
     @include container;
   }
 
-  #header, #footer {
-    @include column($blueprint-grid-columns);
-    @include last;
+  #container > #header, #container > #footer {
+    @include column($blueprint-grid-columns, true);
   }
 
-  $sidebar-columns: floor($blueprint-grid-columns / 4);
-  $content-columns: $blueprint-grid-columns - $sidebar-columns;
-  #sidebar {
+  #container > #sidebar {
     @include column($sidebar-columns, true);
 
     input[type=text] {
@@ -49,7 +49,7 @@ body {
     }
   }
 
-  #content {
+  #container > #section {
     @include column($content-columns); 
   }
     
@@ -66,13 +66,13 @@ body {
     }
 
     input[type=submit] {
+      @include border-radius(6px);
+      @include box-shadow;
       background: #222 url(../images/overlay.png) repeat-x;
       display: inline-block;
       padding: 5px 10px 6px;
       color: #fff;
       text-decoration: none;
-      @include border-radius(6px);
-      @include box-shadow;
       border: 0px;
       border-bottom: 1px solid rgba(0,0,0,0.25);
       position: relative;
