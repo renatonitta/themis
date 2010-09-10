@@ -32,11 +32,11 @@ body {
     @include container;
   }
 
-  #container > #header, #container > #footer {
+  #container > header, #container > footer {
     @include column($blueprint-grid-columns, true);
   }
 
-  #container > #sidebar {
+  #container > aside {
     @include column($sidebar-columns, true);
 
     input[type=text] {
@@ -49,7 +49,7 @@ body {
     }
   }
 
-  #container > #section {
+  #container > section {
     @include column($content-columns); 
   }
     
