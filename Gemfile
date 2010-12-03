@@ -42,6 +42,7 @@ group :cucumber do
   gem "database_cleaner", ">=0.5.0"
   gem "spork", ">=0.8.4"
   gem "pickle", ">=0.4.2"
+  gem "launchy"
 end
 
 gem "inploy", ">=1.6.8"
