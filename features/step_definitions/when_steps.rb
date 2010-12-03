@@ -19,11 +19,11 @@ When /^I approve the post$/ do
 end
 
 When /^I click to edit the first item$/ do
-  locate("a.edit:first").click
+  find("a.edit:first").click
 end
 
 When /^I click to destroy the first item$/ do
-  locate("a.destroy:first").click
+  find("a.destroy:first").click
 end
 
 When /^I fill the post form$/ do
