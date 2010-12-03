@@ -36,9 +36,9 @@ group :test do
 end
 
 group :cucumber do
-  gem "cucumber", ">=0.6.3"
+  gem "cucumber", ">=0.9.4"
   gem "cucumber-rails", ">=0.3.2"
-  gem "capybara", ">=0.3.6"
+  gem "capybara", "=0.3.9"
   gem "database_cleaner", ">=0.5.0"
   gem "spork", ">=0.8.4"
   gem "pickle", ">=0.4.2"
