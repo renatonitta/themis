@@ -14,8 +14,7 @@ class Post < ActiveRecord::Base
 
   default_scope :order => ["created_at DESC"]
   belongs_to :author, :class_name => 'User', :foreign_key => "user_id"
-  belongs_to :section
-  validates_presence_of :title, :body, :author, :section
+  validates_presence_of :title, :body, :author
   has_friendly_id :title, :use_slug => true
   acts_as_taggable_on :tags
 end
