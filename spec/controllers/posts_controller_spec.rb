@@ -12,21 +12,21 @@ describe PostsController do
         response.code.should eql("200")
       end
 
-      it "should return only approved posts" do
+      it "should return only published posts" do
         3.times { Factory :post, :section => section }
-        2.times { Factory :approved_post, :section => section }
+        2.times { Factory :published_post, :section => section }
         get :index, :section_id => section.id, :format => format
-        assigns(:posts).size.should == section.posts.approved.size
+        assigns(:posts).size.should == section.posts.published.size
       end
 
       it "should paginate the posts" do
-        (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+        (Post::PER_PAGE + 1).times { Factory :published_post, :section => section }
         get :index, :section_id => section.id, :page => 2
         assigns(:posts).size.should == 1
       end
 
       it "should order post from newest to oldest" do
-        5.times { Factory :approved_post, :section => section }
+        5.times { Factory :published_post, :section => section }
         get :index, :section_id => section.id, :format => format
         assigns(:posts).first.created_at.should > assigns(:posts).last.created_at
       end
@@ -34,7 +34,7 @@ describe PostsController do
 
     it "should cache the page" do
       clear_cache
-      (Post::PER_PAGE + 1).times { Factory :approved_post, :section => section }
+      (Post::PER_PAGE + 1).times { Factory :published_post, :section => section }
       get :index, :section_id => section.id, :page => 2
       File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
     end
@@ -68,11 +68,11 @@ describe PostsController do
       assigns(:sections).size.should == Section.count
     end
 
-    it "should return all the approved posts" do
+    it "should return all the published posts" do
       Factory :post
-      2.times { Factory :approved_post }
+      2.times { Factory :published_post }
       get :all
-      assigns(:posts).size.should == Post.approved.size
+      assigns(:posts).size.should == Post.published.size
     end
 
     it "should cache the page" do
@@ -83,17 +83,17 @@ describe PostsController do
   end
 
   describe "GET by_tag" do
-    it "should return all the approved posts with the specific tag" do
+    it "should return all the published posts with the specific tag" do
       Factory :post, :tag_list => 'tag1'
-      2.times {|i| Factory :approved_post, :tag_list => "tag#{i}" }
+      2.times {|i| Factory :published_post, :tag_list => "tag#{i}" }
       get :by_tag, :tag => 'tag1'
       assigns(:posts).size.should == 1
     end
 
-    it "should return all approved posts with the specific tag paginated" do
-      (Post::PER_PAGE + 1).times { Factory :approved_post, :tag_list => 'tag'}
+    it "should return all published posts with the specific tag paginated" do
+      (Post::PER_PAGE + 1).times { Factory :published_post, :tag_list => 'tag'}
       get :by_tag, :tag => 'tag', :page => 2
-      assigns(:posts).size.should == 1 
+      assigns(:posts).size.should == 1
     end
 
     it "should assign the tag to @tag" do

@@ -17,7 +17,7 @@ Themis::Application.routes.draw do
   namespace 'panel' do
     resources :posts do
       member do
-        match 'approve' => 'posts#approve', :as => 'approve'
+        match 'approve' => 'posts#publish', :as => 'approve'
       end
       collection do
         post 'preview'

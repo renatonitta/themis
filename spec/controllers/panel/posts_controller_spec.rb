@@ -67,7 +67,7 @@ describe Panel::PostsController do
 
     describe "DELETE destroy" do
       it "should delete a post" do
-        delete :destroy, :id => post_object.id 
+        delete :destroy, :id => post_object.id
         Post.find_by_id(post_object.id).should be_nil
       end
 
@@ -79,29 +79,16 @@ describe Panel::PostsController do
       end
     end
 
-    describe "PUT approve" do
-      it "should return 302 as the status code" do
-        put :approve, :id => 5
-        response.code.should eql('302')
-      end
-    end
-  end
-
-  context "with a logged approver user" do
-    before :each do
-      sign_in Factory(:approver_user)
-    end
-
-    describe "PUT approve" do
-      it "should approve a post" do
-        put :approve, :id => post_object.id
-        Post.find(post_object.id).should be_approved
+    describe "PUT publish" do
+      it "should publish a post" do
+        put :publish, :id => post_object.id
+        Post.find(post_object.id).should be_published
       end
 
       it "should expire the blog index page cache" do
         file_name = "#{CACHE_PATH}/index.html"
         File.open file_name, 'w'
-        put :approve, :id => post_object.id
+        put :publish, :id => post_object.id
         File.exist?("#{CACHE_PATH}/index.html").should be_false
       end
     end

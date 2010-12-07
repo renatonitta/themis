@@ -6,18 +6,18 @@ class PostsController < InheritedResources::Base
   caches_page :all, :index, :show
 
   def all
-    paginate resource_class.approved
+    paginate resource_class.published
   end
 
   def by_tag
     @tag = params[:tag]
-    paginate resource_class.approved.tagged_with(@tag)
+    paginate resource_class.published.tagged_with(@tag)
   end
 
   private
 
   def collection
-    paginate end_of_association_chain.approved
+    paginate end_of_association_chain.published
   end
 
   def paginate(posts)
