@@ -1,6 +1,16 @@
 class Post < ActiveRecord::Base
   PER_PAGE = 5
+
   include AASM
+
+  aasm_initial_state :saved
+
+  aasm_state :saved
+  aasm_state :published
+
+  aasm_event :publish do
+    transitions :to => :published, :from => :saved
+  end
 
   default_scope :order => ["created_at DESC"]
   belongs_to :author, :class_name => 'User', :foreign_key => "user_id"
@@ -8,15 +18,6 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :body, :author, :section
   has_friendly_id :title, :use_slug => true
   acts_as_taggable_on :tags
-  
-  aasm_initial_state :waiting_approval
-
-  aasm_state :waiting_approval
-  aasm_state :approved
-  
-  aasm_event :approve do
-    transitions :to => :approved, :from => [:waiting_approval]
-  end
 end
 
 class String
