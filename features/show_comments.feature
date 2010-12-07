@@ -1,7 +1,7 @@
 Feature: Show comments
 
   Scenario: Home Page
-    Given 2 approved posts exist
+    Given 2 published posts exist
     When I go to the home page
     Then I should see "Add comment"
 

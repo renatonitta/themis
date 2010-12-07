@@ -1,16 +1,16 @@
 !!! XML
 %urlset{"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:schemaLocation" => "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd", :xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
   %url
-    %loc= root_url 
-    %lastmod= Post.approved.first.updated_at
+    %loc= root_url
+    %lastmod= Post.published.first.updated_at
     %priority="1.0"
   - @posts.each do |post|
-    %url  
-      %loc= section_post_url(post.section, post) 
+    %url
+      %loc= section_post_url(post.section, post)
       %lastmod= post.updated_at
       %priority="0.5"
   - @sections.each do |section|
-    %url  
-      %loc= section_url(section) 
-      %lastmod= section.posts.approved.first.try(:updated_at)
+    %url
+      %loc= section_url(section)
+      %lastmod= section.posts.published.first.try(:updated_at)
       %priority="0.5"

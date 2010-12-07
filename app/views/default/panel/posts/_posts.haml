@@ -1,3 +1,4 @@
 %p= link_to "New post", new_panel_post_path, :class => "new-post"
-- current_user.posts_editable.each do |post|
+
+- Post.all.each do |post|
   %p= link_to post.title, edit_panel_post_path(post)
