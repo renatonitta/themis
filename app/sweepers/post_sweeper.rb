@@ -9,15 +9,13 @@ class PostSweeper < ActionController::Caching::Sweeper
     expire_cache post
   end
 
-  protected 
-  
+  protected
+
   def expire_cache(post)
-    section = post.section
-    [root_path, sitemap_path(:format => :xml), section_path(section, post), section_posts_path(section)].each do |path|
+    [root_path, sitemap_path(:format => :xml), post_path(post)].each do |path|
       expire_page path
     end
     Post.each_page { |index| expire_page posts_page_path(index) }
-    section.posts.each_page { |index| expire_page page_section_posts_path(section.id, index) }
   end
 end
 

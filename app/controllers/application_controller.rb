@@ -7,6 +7,5 @@ class ApplicationController < ActionController::Base
 
   def sitemap
     @posts = Post.all
-    @sections = Section.all
   end
 end

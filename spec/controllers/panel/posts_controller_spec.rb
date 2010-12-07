@@ -14,23 +14,23 @@ describe Panel::PostsController do
 
     describe "POST create" do
       it "should create a post for the logged user" do
-        post :create, :post =>  { :title => "Title", :body => "Body", :section_id => post_object.section.id }
+        post :create, :post =>  { :title => "Title", :body => "Body" }
         Post.first.author.should == controller.current_user
       end
 
       it "should not expire the blog index page cache" do
         file_name = "#{CACHE_PATH}/index.html"
         File.open file_name, 'w'
-        post :create, :post =>  { :title => "Title", :body => "Body", :section_id => post_object.section.id }
+        post :create, :post =>  { :title => "Title", :body => "Body" }
         File.exist?(file_name).should be_true
       end
 
-      it "should not expire the section posts page cache" do
-        path = "#{CACHE_PATH}/sections/#{post_object.section.id}/posts/pages"
+      it "should not expire the posts page cache" do
+        path = "#{CACHE_PATH}/posts/pages"
         file_name = "#{path}/1.html"
         FileUtils.mkdir_p path
         File.open file_name, 'w'
-        post :create, :post =>  { :title => "Title", :body => "Body", :section_id => post_object.section.id }
+        post :create, :post =>  { :title => "Title", :body => "Body" }
         File.exist?(file_name).should be_true
       end
     end
@@ -56,7 +56,7 @@ describe Panel::PostsController do
       end
 
       it "should expire the post page cache" do
-        path = "#{CACHE_PATH}/sections/#{post_object.section.id}/posts/pages"
+        path = "#{CACHE_PATH}/posts/pages"
         file_name = "#{path}/1.html"
         FileUtils.mkdir_p path
         File.open file_name, 'w'

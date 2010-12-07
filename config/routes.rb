@@ -1,17 +1,14 @@
 Themis::Application.routes.draw do
   devise_for :admins, :users
   resources :users
-  resources :sections do
-    resources :posts do
-      collection do
-        match 'pages/:page' => 'posts#index', :as => 'page'
-      end
+  resources :posts do
+    collection do
+      match 'pages/:page' => 'posts#index', :as => 'page'
     end
   end
   match 'admin' => 'admin/users#index', :as => 'admin'
   namespace 'admin' do
     resources :users
-    resources :sections
   end
   match 'panel' => 'panel/posts#new', :as => 'panel'
   namespace 'panel' do

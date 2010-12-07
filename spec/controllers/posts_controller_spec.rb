@@ -3,82 +3,53 @@ require 'spec_helper'
 describe PostsController do
   should_have_only_public_actions
 
-  let(:section) { Factory :section }
-
   describe "GET index" do
     [:html, :rss].each do |format|
       it "should return 200 as the status code with #{format} format" do
-        get :index, :section_id => section.id, :format => format
+        get :index, :format => format
         response.code.should eql("200")
       end
 
       it "should return only published posts" do
-        3.times { Factory :post, :section => section }
-        2.times { Factory :published_post, :section => section }
-        get :index, :section_id => section.id, :format => format
-        assigns(:posts).size.should == section.posts.published.size
+        3.times { Factory :post }
+        2.times { Factory :published_post }
+        get :index, :format => format
+        assigns(:posts).size.should == Post.published.size
       end
 
       it "should paginate the posts" do
-        (Post::PER_PAGE + 1).times { Factory :published_post, :section => section }
-        get :index, :section_id => section.id, :page => 2
+        (Post::PER_PAGE + 1).times { Factory :published_post }
+        get :index, :page => 2
         assigns(:posts).size.should == 1
       end
 
       it "should order post from newest to oldest" do
-        5.times { Factory :published_post, :section => section }
-        get :index, :section_id => section.id, :format => format
+        5.times { Factory :published_post }
+        get :index, :format => format
         assigns(:posts).first.created_at.should > assigns(:posts).last.created_at
       end
     end
 
     it "should cache the page" do
       clear_cache
-      (Post::PER_PAGE + 1).times { Factory :published_post, :section => section }
-      get :index, :section_id => section.id, :page => 2
-      File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/pages/2.html").should be_true
+      (Post::PER_PAGE + 1).times { Factory :published_post }
+      get :index, :page => 2
+      File.exist?("#{CACHE_PATH}/posts/pages/2.html").should be_true
     end
   end
 
   describe "GET show" do
-    let(:post) { Factory :post, :section => section }
+    let(:post) { Factory :post }
 
     it "should assign the post to @post" do
-      get :show, :section_id => section.id, :id => post.id
+      get :show, :id => post.id
       assigns(:post).should == post
     end
 
-    it "should assign all sections as @sections" do
-      2.times { Factory :section }
-      get :show, :section_id => section.id, :id => post.id
-      assigns(:sections).should == Section.all
-    end
-
     it "should cache the page" do
       clear_cache
-      get :show, :section_id => section.id, :id => post.id
-      File.exist?("#{CACHE_PATH}/sections/#{section.id}/posts/#{post.id}.html").should be_true
-    end
-  end
-
-  describe "GET all" do
-    it "should return all the sections" do
-      2.times { Factory :section }
-      get :all
-      assigns(:sections).size.should == Section.count
-    end
-
-    it "should return all the published posts" do
-      Factory :post
-      2.times { Factory :published_post }
-      get :all
-      assigns(:posts).size.should == Post.published.size
-    end
-
-    it "should cache the page" do
-      clear_cache
-      get :all
-      File.exist?("#{CACHE_PATH}/index.html").should be_true
+      get :show, :id => post.id
+      File.exist?("#{CACHE_PATH}/posts/#{post.id}.html").should be_true
     end
   end
 
