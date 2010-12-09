@@ -4,17 +4,11 @@ module PostsHelper
   end
 
   def rss_link
-    "http://feeds.feedburner.com/#{configuration['name']}#{section_name}".delete(' ')
+    "http://feeds.feedburner.com/#{configuration['name']}".delete(' ')
   end
 
   def rss_title
-    "#{configuration['name']}#{section_name}"
-  end
-
-  private
-
-  def section_name
-    @section.present? ? ' ' + @section.name.capitalize : ''
+    "#{configuration['name']}"
   end
 end
 

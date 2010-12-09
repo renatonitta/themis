@@ -2,8 +2,6 @@ Feature: Creating posts
 
   Scenario: Creating a post
     Given I am logged in
-    And a section exists with name: "Labs"
-
     When I visit the panel
     And I fill the post form
     And I press "Create Post"

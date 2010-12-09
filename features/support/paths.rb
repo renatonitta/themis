@@ -11,12 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-    when /^(.*)'s post page/ 
+    when /^(.*)'s post page/
       post = Post.find_by_title($1)
-      section_post_path(post.section, post)
-
-    when /^"([^\"]*)" section page/ 
-      section_posts_path(Section.find_by_name($1))
+      post_path(post)
 
     when /posts with tag (.*)/
       '/tags/' + $1

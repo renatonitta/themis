@@ -35,17 +35,13 @@ Then /^I should see blog rss$/ do
   page.should have_xpath("//link[@type='application/rss+xml'][@title='#{Themis::Config['name']}'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}']")
 end
 
-Then /^I should see section "([^\"]*)" rss$/ do |section|
-  page.should have_xpath("//link[@type='application/rss+xml'][@title='#{Themis::Config['name']} #{section}'][@href='http://feeds.feedburner.com/#{Themis::Config['name'].delete(" ")}#{section.capitalize}']")
-end
-
 Then /^I should see blog description on page title$/ do
   Then %{I should see "#{Themis::Config['description']}" within "title"}
 end
 
 Then /^I should see the xml file with sitemap tags$/ do
   post = Post.published.first
-  Then %{I should see "#{section_post_url(post.section, post)}" within "loc"}
+  Then %{I should see "#{post_url(post)}" within "loc"}
   Then %{I should see "#{post.updated_at}" within "lastmod"}
 end
 

@@ -24,17 +24,8 @@ describe PostsHelper do
       Themis::Config['name'] = 'Blog Themis'
     end
 
-    context "given there is a section" do
-      it "should return section rss link" do
-        @section = Factory(:section, :name => 'section')
-        rss_link.should == "http://feeds.feedburner.com/BlogThemisSection"
-      end
-    end
-
-    context "given there is no section" do
-      it "should return blog rss link" do
-        rss_link.should == "http://feeds.feedburner.com/BlogThemis"
-      end
+    it "should return blog rss link" do
+      rss_link.should == "http://feeds.feedburner.com/BlogThemis"
     end
   end
 
@@ -43,17 +34,8 @@ describe PostsHelper do
       Themis::Config['name'] = 'Blog Themis'
     end
 
-    context "given there is a section" do
-      it "should return section rss link" do
-        @section = Factory(:section, :name => 'section')
-        rss_title.should == "Blog Themis Section"
-      end
-    end
-
-    context "given there is no section" do
-      it "should return blog rss link" do
-        rss_title.should == "Blog Themis"
-      end
+    it "should return blog rss link" do
+      rss_title.should == "Blog Themis"
     end
   end
 end

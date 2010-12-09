@@ -25,5 +25,5 @@ Themis::Application.routes.draw do
   match 'tags/:tag', :to => 'posts#by_tag', :as => 'tags'
   match 'posts.:format', :to => 'posts#all'
   match 'posts/pages/:page', :to => 'posts#all', :as => 'posts_page'
-  root :to => "posts#all"
+  root :to => "posts#index"
 end

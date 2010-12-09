@@ -4,13 +4,9 @@
     %loc= root_url
     %lastmod= Post.published.first.updated_at
     %priority="1.0"
+
   - @posts.each do |post|
     %url
-      %loc= section_post_url(post.section, post)
+      %loc= post_url(post)
       %lastmod= post.updated_at
-      %priority="0.5"
-  - @sections.each do |section|
-    %url
-      %loc= section_url(section)
-      %lastmod= section.posts.published.first.try(:updated_at)
       %priority="0.5"
