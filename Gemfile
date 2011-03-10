@@ -7,7 +7,8 @@ gem "json_pure", "=1.4.6"
 gem "sqlite3-ruby", :require => "sqlite3", :group => [:development, :test]
 gem "hoptoad_notifier"
 
-gem "haml", ">=3.0.18"
+gem "haml", ">=3.0.25"
+gem "haml-rails", ">= 0.3.4"
 gem "inherited_resources", ">=1.2.1"
 gem "will_paginate", ">=3.0.pre"
 gem "devise", ">=1.1.rc2"
