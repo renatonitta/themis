@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "=3.0.3"
+gem "rails", "=3.0.4"
 
 gem "json_pure", "=1.4.6"
 
@@ -13,7 +13,7 @@ gem "will_paginate", ">=3.0.pre"
 gem "devise", ">=1.1.rc2"
 gem "devise_ldap_authenticatable", ">=0.4.1.1"
 gem "formtastic", ">=1.1.0"
-gem "friendly_id", "~>3.0"
+gem "friendly_id", "~>3.2.1"
 gem "compass", ">= 0.10.1"
 gem "disqus", ">= 1.0.4"
 gem "RedCloth", ">= 4.2.3"
@@ -27,8 +27,7 @@ group :production do
 end
 
 group :test do
-  gem "rspec", ">=2.0.0.alpha.11"
-  gem "rspec-rails", ">=2.0.0.alpha.11"
+  gem "rspec-rails", ">=2.0.1"
   gem "remarkable", ">=4.0.0.alpha4"
   gem "remarkable_activemodel", ">=4.0.0.alpha4"
   gem "remarkable_activerecord", ">=4.0.0.alpha4"
