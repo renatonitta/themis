@@ -25,3 +25,5 @@ capybara-*.html
 public/sitemap*
 .rvmrc
 *~
+config/database.yml
+config/deploy.rb
