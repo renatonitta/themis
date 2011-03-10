@@ -8,7 +8,7 @@ gem "sqlite3-ruby", :require => "sqlite3", :group => [:development, :test]
 gem "hoptoad_notifier"
 
 gem "haml", ">=3.0.18"
-gem "inherited_resources", ">=1.1.2"
+gem "inherited_resources", ">=1.2.1"
 gem "will_paginate", ">=3.0.pre"
 gem "devise", ">=1.1.rc2"
 gem "devise_ldap_authenticatable", ">=0.4.1.1"
