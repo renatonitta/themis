@@ -27,3 +27,4 @@ public/sitemap*
 *~
 config/database.yml
 config/deploy.rb
+config/themis.yml
