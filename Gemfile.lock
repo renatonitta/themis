@@ -126,7 +126,7 @@ GEM
     inherited_resources (1.2.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    inploy (1.7.2)
+    inploy (1.9)
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -267,7 +267,7 @@ DEPENDENCIES
   haml-rails (>= 0.3.4)
   hoptoad_notifier
   inherited_resources (>= 1.2.1)
-  inploy (>= 1.6.8)
+  inploy (>= 1.9)
   json_pure (= 1.4.6)
   launchy
   metric_fu

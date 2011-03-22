@@ -45,4 +45,4 @@ group :cucumber do
   gem "launchy"
 end
 
-gem "inploy", ">=1.6.8"
+gem "inploy", ">=1.9"
